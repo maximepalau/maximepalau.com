@@ -1,0 +1,10 @@
+{
+    "extends": "eslint:recommended",
+    "env": {
+        "jest": true
+    },
+    "rules": {
+        "no-unexpected-multiline": 1,
+        "indent": [ "error", 4 ]
+    }
+}
