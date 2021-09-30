@@ -6,6 +6,8 @@ import React, { FunctionComponent } from 'react'
 
 type PageProps = {}
 
+type PageHeroProps = {}
+
 type PageSectionProps = {}
 
 /* ========================================================================= */
@@ -19,9 +21,16 @@ export const Page: FunctionComponent<PageProps> = props => {
     )
 }
 
-export const PageSection: FunctionComponent<PageSectionProps> = props => {
+export const PageHero: FunctionComponent<PageHeroProps> = props => {
 
     return (
         <div {...props} />
+    )
+}
+
+export const PageSection: FunctionComponent<PageSectionProps> = props => {
+
+    return (
+        <section tabIndex={-1} {...props} />
     )
 }

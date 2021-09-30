@@ -5,34 +5,38 @@ export type Catchphrase = {
 }
 
 export type ArticleNewsPost = {
-    __typename: string
-    author: string
-    sentence: string
-    sourceUrl: string
+    __typename: 'ArticleNewsPost'
+    heading: string
+    surtitle: string | null
+    teaserText: string | null
+    article: {
+        url: string
+    }
+}
+
+export type ExternalResourceNewsPost = {
+    __typename: 'ExternalResourceNewsPost'
+    surtitle: string | null
+    heading: string
+    teaserText: string | null
+    resourceUrl: string
 }
 
 export type ProjectNewsPost = {
-    __typename: string
+    __typename: 'ProjectNewsPost'
     heading: string
+    surtitle: string
+    teaserText: string
     project: {
         url: string
-        surtitle: string
-        teaserText: string
     }
 }
 
 export type TwitterNewsPost = {
-    __typename: string
+    __typename: 'TwitterNewsPost'
     surtitle: string
     textRaw: object[]
-}
-
-export type ExternalResourceNewsPost = {
-    __typename: string
-    surtitle: string
-    heading: string
-    teaserText: string
-    resourceUrl: string
+    url: string
 }
 
 export type Project = {
