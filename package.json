@@ -8,6 +8,7 @@
     },
     "dependencies": {
         "@apollo/client": "^3.3.14",
+        "@sanity/block-content-to-react": "^3.0.0",
         "graphql": "^15.5.0",
         "next": "latest",
         "react": "^17.0",
