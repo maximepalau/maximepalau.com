@@ -1,14 +1,18 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ComponentPropsWithoutRef } from 'react'
 
 /* ========================================================================= */
 /* Type(s) */
 /* ========================================================================= */
 
-type PageProps = {}
+type PageProps = {} & ComponentPropsWithoutRef<'div'>
 
-type PageHeroProps = {}
+type PageHeroProps = {} & ComponentPropsWithoutRef<'header'>
 
-type PageSectionProps = {}
+type PageMainProps = {} & ComponentPropsWithoutRef<'main'>
+
+type PageSectionProps = {} & ComponentPropsWithoutRef<'section'>
+
+type PageFooterProps = {} & ComponentPropsWithoutRef<'footer'>
 
 /* ========================================================================= */
 /* Component(s) */
@@ -24,7 +28,14 @@ export const Page: FunctionComponent<PageProps> = props => {
 export const PageHero: FunctionComponent<PageHeroProps> = props => {
 
     return (
-        <div {...props} />
+        <header {...props} />
+    )
+}
+
+export const PageMain: FunctionComponent<PageMainProps> = props => {
+
+    return (
+        <main tabIndex={-1} id='page-content' {...props} />
     )
 }
 
@@ -32,5 +43,12 @@ export const PageSection: FunctionComponent<PageSectionProps> = props => {
 
     return (
         <section tabIndex={-1} {...props} />
+    )
+}
+
+export const PageFooter: FunctionComponent<PageFooterProps> = props => {
+
+    return (
+        <footer {...props} />
     )
 }

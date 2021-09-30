@@ -26,16 +26,16 @@ type FeaturedNewsProps = {
 const FeaturedNews: FunctionComponent<FeaturedNewsProps> = ({ posts }) => {
     return (
         <>
-            {posts.map(post => {
+            {posts.map((post, idx) => {
                 switch (post.__typename) {
                     case 'ArticleNewsPost':
-                        return <ArticleNewsPost {...post} />
+                        return <ArticleNewsPost {...post} key={`featured-news-${idx}`} />
                     case 'ExternalResourceNewsPost':
-                        return <ExternalResourceNewsPost {...post} />
+                        return <ExternalResourceNewsPost {...post} key={`featured-news-${idx}`} />
                     case 'ProjectNewsPost':
-                        return <ProjectNewsPost {...post} />
+                        return <ProjectNewsPost {...post} key={`featured-news-${idx}`} />
                     case 'TwitterNewsPost':
-                        return <TwitterNewsPost {...post} />
+                        return <TwitterNewsPost {...post} key={`featured-news-${idx}`} />
                 }
             })}
         </>

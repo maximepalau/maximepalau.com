@@ -53,6 +53,7 @@ export default gql`
             }
             projectsTextRaw
             projects {
+                id: _id
                 title
                 missions
                 technologies {
@@ -69,7 +70,9 @@ export default gql`
                 author
                 sourceUrl
             }
+            articlesTextRaw
             articles {
+                id: _id
                 title
                 publicationDate
                 technologies {
@@ -89,6 +92,12 @@ export default gql`
             footerHeading
             footerTextRaw
             footerEmail
-        } 
+        }
+
+        allGlobals (limit: 1) {
+            linkedinUrl
+            twitterUrl
+            githubUrl
+        }
     }
 `

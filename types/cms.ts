@@ -1,3 +1,5 @@
+import BlockContent from './block-content'
+
 export type Catchphrase = {
     sentence: string
     author: string
@@ -35,15 +37,16 @@ export type ProjectNewsPost = {
 export type TwitterNewsPost = {
     __typename: 'TwitterNewsPost'
     surtitle: string
-    textRaw: object[]
+    textRaw: BlockContent
     url: string
 }
 
 export type Project = {
+    id: string
     client: {
         title: string
     }
-    descriptionRaw: object[]
+    descriptionRaw: BlockContent
     missions: string
     projectUrl: string
     technologies: {
@@ -53,9 +56,9 @@ export type Project = {
 }
 
 export type Article = {
+    id: string
     title: string
     publicationDate: string
-    textRaw: object[]
     technologies: {
       title: string
     }[]
@@ -64,5 +67,11 @@ export type Article = {
 
 export type Interest = {
     heading: string
-    textRaw: object[]
+    textRaw: BlockContent
+}
+
+export type Globals = {
+    linkedinUrl: string
+    twitterUrl: string
+    githubUrl: string
 }

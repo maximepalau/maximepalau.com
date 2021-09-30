@@ -1,9 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import BlockContent from '@sanity/block-content-to-react'
 
-import {
-    TwitterNewsPost as TwitterNewsPostType,
-} from '@/types/cms'
+import { TwitterNewsPost as TwitterNewsPostType } from '@/types/cms'
 
 /* ========================================================================= */
 /* Type(s) */
@@ -24,7 +22,7 @@ const TwitterNewsPost: FunctionComponent<TwitterNewsPostProps> = ({ surtitle, te
                 <header>{surtitle}</header>
             )}
 
-            {/* Heading */}
+            {/* Text */}
             <BlockContent blocks={textRaw} />
 
             {/* Link */}
