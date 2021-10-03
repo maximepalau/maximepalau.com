@@ -21,7 +21,12 @@ type PageFooterProps = {} & ComponentPropsWithoutRef<'footer'>
 export const Page: FunctionComponent<PageProps> = props => {
 
     return (
-        <div {...props} />
+        <>
+            <a href='page-content'>
+                Skip to main content
+            </a>
+            <div {...props} />
+        </>
     )
 }
 

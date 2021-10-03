@@ -1,0 +1,125 @@
+/* =========================================================================  */
+/* Base styles */
+/* =========================================================================  */
+
+/**
+ * 1. Cross-OS-friendly font stack (during FOUT).
+ */
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-y: scroll;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+/**
+ * 1. Make sure long email addresses break on small screens.
+ */
+a {
+    color: inherit;
+    text-decoration: none;
+    word-wrap: break-word; /* [1] */
+}
+
+em, i {
+    font-style: italic;
+}
+
+abbr,
+abbr[title] {
+    text-decoration: none;
+    cursor: inherit;
+}
+
+small {
+    font-size: 100%;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+address {
+    font-style: normal;
+}
+
+b, strong {
+    font-weight: normal;
+}
+
+/* =========================================================================  */
+/* Form elements */
+/* =========================================================================  */
+
+input,
+textarea {
+    // @include input-reset;
+}
+
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+figure {
+    margin: 0;
+}
+
+/**
+ * 1. Project-specific styles.
+ */
+button {
+    // @include button-reset;
+    // @include button; /* [1] */
+    cursor: pointer;
+}
+
+/* =========================================================================  */
+/* State-specific */
+/* =========================================================================  */
+
+/**
+ * Disabled the scroll within the page.
+ */
+html[data-locked='true'],
+html[data-locked='true'] body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding-right: var(--sb) !important;
+}
+
+/* =========================================================================  */
+/* Accessibility */
+/* =========================================================================  */
+
+/**
+ * 1. When the user doesn’t use the keyboard, let’s remove the focus ring.
+ * 2. For accessibility reasons, we sometimes need to focus an item
+ *    with `tabindex='-1'`. Thus, voiceover reads the content, yet we don’t
+ *    need the focus ring here.
+ */
+html[data-whatintent]:not([data-whatintent='keyboard']) *:focus,
+[tabindex='-1']:focus {
+    outline: none;
+}
+
+[hidden] {
+    display: none !important;
+}

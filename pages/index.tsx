@@ -17,7 +17,8 @@ import {
 import BlockContentType from '@/types/block-content'
 import { Page, PageHero, PageMain, PageSection, PageFooter } from '@/components/globals/page'
 import Catchphrase from '@/components/globals/catchphrase'
-import FeaturedNews from '@/components/news/featured-news'
+import Hero from '@/components/globals/hero'
+
 import ProjectList from '@/components/projects/project-list'
 import ArticleList from '@/components/articles/article-list'
 
@@ -95,9 +96,10 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
         <Page>
             {/* Hero */}
             <PageHero>
-                <h1>{props.title}</h1>
-                <BlockContent blocks={props.introductionRaw} />
-                <FeaturedNews posts={props.featuredNews} />
+                <Hero
+                    heading={props.title}
+                    introduction={props.introductionRaw}
+                    news={props.featuredNews} />
             </PageHero>
 
             {/* Navigation */}
