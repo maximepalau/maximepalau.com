@@ -1,0 +1,43 @@
+.carousel {
+    position: relative;
+}
+
+.trackInner, {
+    display: flex;
+    width: 100%;
+}
+
+.trackInner,
+.trackInner a,
+.trackInner button {
+    -webkit-user-drag: 'none';
+    user-select: 'none';
+}
+
+.slide {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.progress {
+    width: 100%;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.progressAnimating {
+    animation: progress-scale 1 linear;
+}
+
+.progressPaused {
+    animation-play-state: paused;
+}
+
+@keyframes progress-scale {
+    from {
+        transform: scaleX(0);
+    } to {
+        transform: scaleX(1);
+    }
+}

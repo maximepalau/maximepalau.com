@@ -1,0 +1,46 @@
+/* ========================================================================= */
+/* Arrow link */
+/* ========================================================================= */
+
+.arrow-link {
+    display: inline-flex;
+    align-items: center;
+}
+
+.arrow-link__icon {
+    display: inline-block;
+    margin-left: .8rem;
+    transform: translateX(0);
+    transition: transform .2s ease-out;
+}
+
+.arrow-link:hover .arrow-link__icon,
+.scope-hover:hover .arrow-link__icon {
+    transform: translateX(.6rem);
+}
+
+/* ========================================================================= */
+/* Scroll link */
+/* ========================================================================= */
+
+.scroll-link {
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.scroll-link:hover .scroll-link__icon,
+.scope-hover:hover .scroll-link__icon {
+    animation: icon-jump 1.2s infinite ease-out;
+}
+
+@keyframes icon-jump {
+    0% {
+        transform: translateY(0);
+    } 25% {
+        transform: translateY(30%);
+    } 75% {
+        transform: translateY(-30%);
+    } 100% {
+        transform: translateY(0);
+    }
+}

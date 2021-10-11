@@ -1,0 +1,66 @@
+/* ========================================================================= */
+/* Layout */
+/* ========================================================================= */
+
+/**
+ * main: 0px
+ * xs: 496px
+ * s: 704px
+ * m: 960px
+ * l: 1104px
+ * xl: 1408px
+ * xxl: 1600px
+ */
+$layouts-config: (
+    main: 0,
+    xs: 31em,
+    s: 44em,
+    m: 60em,
+    l: 69em,
+    xl: 88em,
+    xxl: 100em
+);
+
+$layouts-name: map-keys($layouts-config);
+$layouts-break-point: map-values($layouts-config);
+
+/* ========================================================================= */
+/* Layers */
+/* ========================================================================= */
+
+$z-skip-link: 20;
+
+/* ========================================================================= */
+/* Icons */
+/* ========================================================================= */
+
+/**
+ * Characters to escape from SVGs.
+ * Source: https://github.com/Threespot/frontline-sass/blob/master/src/functions/_inline-svg.scss
+ */
+$fs-escape-chars: (
+    ' ': '%20',
+    '\'': '%22',
+    '"': '%27',
+    '#': '%23',
+    '/': '%2F',
+    ':': '%3A',
+    '(': '%28',
+    ')': '%29',
+    '%': '%25',
+    '<': '%3C',
+    '>': '%3E',
+    '\\': '%5C',
+    '^': '%5E',
+    '{': '%7B',
+    '|': '%7C',
+    '}': '%7D',
+);
+
+/**
+ * SVG icon map to be used with the `svg` function.
+ */
+$svg-icons: (
+    burger: '<svg viewBox="0 0 22 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g transform="translate(.5, 0.5)" fill="none" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-width="0.84"><line x1="21" y1="8.05" x2="-5.82867088e-16" y2="8.05" id="Path-2"></line><line x1="21" y1="15.75" x2="-5.82867088e-16" y2="15.75" id="Path-2-Copy"></line><line x1="21" y1="0.35" x2="-5.82867088e-16" y2="0.35" id="Path-2-Copy-2"></line></g></svg>',
+    arrowDown: '<svg viewBox="0 0 14 13" xmlns="http://www.w3.org/2000/svg"><path d="M7 0v12m6-6l-6 6-6-6" stroke="currentColor" fill="none" fillRule="evenodd" /></svg>',
+);

@@ -1,0 +1,94 @@
+/* ========================================================================= */
+/* Base styles */
+/* ========================================================================= */
+
+/**
+ * 1. Cross-OS-friendly font stack (during FOUT).
+ */
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-y: scroll;
+}
+
+body {
+    margin: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+/**
+ * 1. Make sure long email addresses break on small screens.
+ */
+a {
+    color: inherit;
+    text-decoration: none;
+    word-wrap: break-word; /* [1] */
+}
+
+em, i {
+    font-style: italic;
+}
+
+abbr,
+abbr[title] {
+    text-decoration: none;
+    cursor: inherit;
+}
+
+small {
+    font-size: 100%;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+address {
+    font-style: normal;
+}
+
+b, strong {
+    font-weight: normal;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ========================================================================= */
+/* Form elements */
+/* ========================================================================= */
+
+input,
+textarea {}
+
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+figure {
+    margin: 0;
+}
+
+button {
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}

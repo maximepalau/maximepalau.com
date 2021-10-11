@@ -1,0 +1,10 @@
+.twitter-rich-text a {
+    color: #1B95E0;
+    transition: color .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+@media (hover: hover) {
+    .twitter-rich-text a:hover {
+        color: #0876b9;
+    }
+}
