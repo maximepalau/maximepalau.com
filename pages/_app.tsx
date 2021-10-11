@@ -1,6 +1,7 @@
 import React from 'react'
+import 'wicg-inert'
 
-import '@/assets/src/styles/index.scss'
+import '@/assets/styles/index.scss'
 
 /* ========================================================================= */
 /* Typing */

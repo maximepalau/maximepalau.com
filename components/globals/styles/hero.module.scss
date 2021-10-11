@@ -1,0 +1,79 @@
+.container {}
+
+.brand,
+.introductionWrapper {
+    padding: 2.4rem;
+}
+
+.introductionWrapper {
+    padding-bottom: 3.6rem;
+}
+
+.introduction {
+    max-width: 64rem;
+    margin-top: 4.8rem;
+}
+
+.scrollLink {
+    margin-top: .8rem;
+}
+
+.scrollLinkIcon {
+    display: inline-block;
+    margin-left: .8rem;
+}
+
+.news {
+    background-color: var(--second-background-color);
+    box-shadow: var(--inset-shadow);
+}
+
+@include media-query('s') {
+    .brand,
+    .introductionWrapper {
+        padding: 4rem;
+    }
+}
+
+
+@include media-query('m') {
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: var(--second-background-color);
+    }
+
+    .brand,
+    .introductionWrapper {
+        width: calc(100% / 16 * 9);
+    }
+
+    .introductionWrapper,
+    .news {
+        background-color: var(--background-color);
+        box-shadow: var(--outset-shadow);
+    }
+
+    .brand {
+        position: sticky;
+        top: 0;
+    }
+
+    .introductionWrapper {
+        order: 1;
+        position: relative;
+    }
+
+    .introduction {
+        margin-top: 0;
+    }
+
+    .news {
+        width: calc(100% / 16 * 7);
+    }
+
+    .scrollLink {
+        margin-top: 1.6rem;
+    }
+}
+

@@ -6,10 +6,20 @@ import {
     TwitterNewsPost as TwitterNewsPostType,
     ExternalResourceNewsPost as ExternalResourceNewsPostType,
 } from '@/types/cms'
-import ArticleNewsPost from './article-news-post'
-import ExternalResourceNewsPost from './external-resource-news-post'
-import ProjectNewsPost from './project-news-post'
-import TwitterNewsPost from './twitter-news-post'
+
+import {
+    Carousel,
+    CarouselTrack,
+    CarouselSlide,
+    CarouselPrevButton,
+    CarouselNextButton,
+    CarouselProgress,
+} from '@/components/base/carousel'
+import ArrowLeftIcon from '@/components/icons/arrow-left-icon'
+import ArrowRightIcon from '@/components/icons/arrow-right-icon'
+import NewsPostDispatcher from './news-post-dispatcher'
+
+import styles from './styles/featured-news.module.scss'
 
 /* ========================================================================= */
 /* Type(s) */
@@ -25,20 +35,40 @@ type FeaturedNewsProps = {
 
 const FeaturedNews: FunctionComponent<FeaturedNewsProps> = ({ posts }) => {
     return (
-        <>
-            {posts.map((post, idx) => {
-                switch (post.__typename) {
-                    case 'ArticleNewsPost':
-                        return <ArticleNewsPost {...post} key={`featured-news-${idx}`} />
-                    case 'ExternalResourceNewsPost':
-                        return <ExternalResourceNewsPost {...post} key={`featured-news-${idx}`} />
-                    case 'ProjectNewsPost':
-                        return <ProjectNewsPost {...post} key={`featured-news-${idx}`} />
-                    case 'TwitterNewsPost':
-                        return <TwitterNewsPost {...post} key={`featured-news-${idx}`} />
-                }
-            })}
-        </>
+        <Carousel
+            id='featured-news'
+            label='Featured news'
+            total={posts?.length}
+            autoplayTime={3000}
+            transitionTime={500}
+            className={styles.carousel}>
+            {/* Progress bar */}
+            <CarouselProgress className={styles.progress} />
+
+            {/* Slides track */}
+            <CarouselTrack>
+                {posts.map((post, idx) => (
+                    <CarouselSlide
+                        label={post?.surtitle}
+                        index={idx}
+                        key={`featured-news-${idx}`}>
+                        <NewsPostDispatcher post={post} />
+                    </CarouselSlide>
+                ))}
+            </CarouselTrack>
+
+            {/* Controls (prev./next) */}
+            <nav
+                aria-label='Featured news controls'
+                className={styles.controls}>
+                <CarouselPrevButton className={styles.controlPrev}>
+                    <ArrowLeftIcon />
+                </CarouselPrevButton>
+                <CarouselNextButton className={styles.controlNext}>
+                    <ArrowRightIcon />
+                </CarouselNextButton>
+            </nav>
+        </Carousel>
     )
 }
 

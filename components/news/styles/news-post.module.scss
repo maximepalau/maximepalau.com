@@ -1,0 +1,37 @@
+.container {
+    height: 100%;
+    padding: 3.6rem 2.4rem;
+}
+
+.surtitle {
+    margin-bottom: 1.6rem;
+}
+
+.text {
+    max-width: 56rem;
+    margin-bottom: .8rem;
+}
+
+.description {
+    max-width: 36rem;
+}
+
+.action {
+    margin-top: 1.6rem;
+}
+
+@include media-query('s') {
+    .container {
+        padding: 4rem;
+    }
+}
+
+@include media-query('m') {
+    .description {
+        margin-top: .8rem;
+    }
+
+    .twitterAction {
+        margin-top: .8rem;
+    }
+}

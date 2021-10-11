@@ -1,5 +1,7 @@
 import React, { FunctionComponent, ComponentPropsWithoutRef } from 'react'
 
+import styles from './styles/page.module.scss'
+
 /* ========================================================================= */
 /* Type(s) */
 /* ========================================================================= */
@@ -22,7 +24,9 @@ export const Page: FunctionComponent<PageProps> = props => {
 
     return (
         <>
-            <a href='page-content'>
+            <a
+                className={styles.skipLink}
+                href='#page-content'>
                 Skip to main content
             </a>
             <div {...props} />

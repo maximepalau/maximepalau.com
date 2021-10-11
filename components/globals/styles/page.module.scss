@@ -1,0 +1,23 @@
+/* ========================================================================= */
+/* Skip link */
+/* ========================================================================= */
+
+/**
+ * 1. Fallback IE.
+ */
+.skipLink {
+    padding: .8rem 1.2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%); /* [1] */
+    transform: translateX(calc(-100% - 1rem));
+    text-align: center;
+    z-index: $z-skip-link;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+}
+
+.skipLink:focus {
+    transform: translateX(0);
+}
