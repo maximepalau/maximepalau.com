@@ -1,0 +1,120 @@
+.navigation {
+    padding: .8rem 1.6rem;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.link {
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+@include media-query('main', 'm') {
+    .openButton {
+        padding: 1.2rem .8rem;
+        position: fixed;
+        top: 1.6rem;
+        right: 1.6rem;
+    }
+
+    .closeButton {
+        padding: 1rem .8rem;
+        position: absolute;
+        top: 1.6rem;
+        right: 1.6rem;
+    }
+
+    .modal {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        height: 100%;
+        padding: 2.4rem;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        transform: translateX(100%);
+        background-color: var(--lighter-background-color);
+        box-shadow: var(--outset-shadow);
+        transition: transform .3s ease-out;
+        z-index: $z-nav-modal;
+    }
+
+    .modal:focus-within {
+        transform: translateX(0);
+    }
+
+    .item {
+        margin-bottom: .8rem;
+    }
+
+    .socialMedia {
+        margin-top: auto;
+        padding: 2.4rem 0;
+    }
+
+    .socialMediaHeading {
+        margin-bottom: .8rem;
+    }
+    
+    .socialMediaList {
+        display: flex;
+    }
+    
+    .socialMediaListItem {
+        margin-right: 1.6rem;
+    }
+}
+
+@include media-query('m') {
+    .navigation {
+        position: sticky;
+        top: 0;
+        background-color: var(--lighter-background-color);
+        box-shadow: var(--outset-shadow);
+    }
+
+    .list {
+        flex-direction: row;
+    }
+
+    .item {
+        margin-right: 1.6rem;
+    }
+
+    .modal {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .openButton {
+        display: none;
+    }
+
+    .closeButton {
+        display: none;
+    }
+
+    .socialMedia {
+        display: flex;
+        align-items: center;
+    }
+    
+    .socialMediaList {
+        display: flex;
+        align-items: center;
+    }
+
+    .socialMediaListItem {
+        margin-left: 1.6rem;
+    }
+
+    .socialMediaIcon {
+        display: flex;
+        align-items: center;
+    }
+}

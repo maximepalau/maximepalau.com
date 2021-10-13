@@ -24,7 +24,7 @@
 }
 
 .news {
-    background-color: var(--second-background-color);
+    background-color: var(--darker-background-color);
     box-shadow: var(--inset-shadow);
 }
 
@@ -40,7 +40,8 @@
     .container {
         display: flex;
         flex-wrap: wrap;
-        background-color: var(--second-background-color);
+        min-height: calc(100vh - var(--navigation-height, 0));
+        background-color: var(--darker-background-color);
     }
 
     .brand,

@@ -14,8 +14,8 @@
     transform: translateX(calc(-100% - 1rem));
     text-align: center;
     z-index: $z-skip-link;
-    color: var(--primary-color);
-    background-color: var(--secondary-color);
+    color: var(--text-color);
+    background-color: var(--lighter-background-color);
 }
 
 .skipLink:focus {

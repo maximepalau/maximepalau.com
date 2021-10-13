@@ -3,6 +3,7 @@ import BlockContent from '@sanity/block-content-to-react'
 
 import client from '@/plugins/apollo-client'
 import homePageQuery from '@/queries/home-page'
+
 import {
     Article as ArticleType,
     Catchphrase as CatchphraseType,
@@ -15,10 +16,11 @@ import {
     Globals as GlobalsType,
 } from '@/types/cms'
 import BlockContentType from '@/types/block-content'
+
 import { Page, PageHero, PageMain, PageSection, PageFooter } from '@/components/globals/page'
+import Navigation from '@/components/globals/navigation'
 import Catchphrase from '@/components/globals/catchphrase'
 import Hero from '@/components/globals/hero'
-
 import ProjectList from '@/components/projects/project-list'
 import ArticleList from '@/components/articles/article-list'
 
@@ -103,17 +105,9 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
             </PageHero>
 
             {/* Navigation */}
-            <nav aria-label='Page sections'>
-                <ul>
-                    {Object.values(sections).map((section: { heading: string, id: string, isEnabled: boolean }) => section.isEnabled && (
-                        <li key={'nav-item' + section.id}>
-                            <a href={`#${section.id}`}>
-                                {section.heading}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
+            <Navigation
+                globals={props.globals}
+                sections={Object.values(sections)} />
 
             <PageMain>
                 {/* Info & contact */}

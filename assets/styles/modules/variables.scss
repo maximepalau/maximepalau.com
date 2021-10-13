@@ -1,17 +1,20 @@
 :root {
     --black: #1A1A1A;
+    --light-grey: #f9f9f9;
+    --grey: #F6F6F6;
     --medium-grey: #F4F2F2;
-    --light-grey: #F6F6F6;
 
     --light-theme-text-color: var(--black);
-    --light-theme-background-color: var(--light-grey);
-    --light-theme-second-background-color: var(--medium-grey);
+    --light-theme-background-color: var(--grey);
+    --light-theme-darker-background-color: var(--medium-grey);
+    --light-theme-lighter-background-color: var(--light-grey);
     --light-theme-outset-shadow: 0 .2rem 2rem .1rem rgba(0, 0, 0, .05);
     --light-theme-inset-shadow: inset 0 0 2rem .4rem rgba(0, 0, 0, .05);
 
     --text-color: var(--light-theme-text-color);
     --background-color: var(--light-theme-background-color);
-    --second-background-color: var(--light-theme-second-background-color);
+    --darker-background-color: var(--light-theme-darker-background-color);
+    --lighter-background-color: var(--light-theme-lighter-background-color);
     --outset-shadow: var(--light-theme-outset-shadow);
     --inset-shadow: var(--light-theme-inset-shadow);
 }

@@ -1,4 +1,53 @@
 /* ========================================================================= */
+/* Underlines */
+/* ========================================================================= */
+
+.underline {
+    background-image: linear-gradient(to bottom, currentColor, currentColor);
+    background-size: 100% 0.07em;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+}
+
+.underline:hover {
+    animation: underline-slide-out-in 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 1 forwards;
+}
+
+.hover-underline {
+    background-image: linear-gradient(to bottom, currentColor, currentColor);
+    background-size: 0% .07em;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    transition: background-size .6s cubic-bezier(.165, .84, .44, 1);
+}
+
+.hover-underline:hover,
+.hover-underline.is-active {
+    background-size: 100% .07em;
+    background-position: 0 100%;
+}
+
+@media (hover: none) {
+    .hover-underline {
+        text-decoration: none;
+        background-image: linear-gradient(to bottom, currentColor, currentColor);
+        background-size: 0% .07em;
+        background-origin: content-box;
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        transition: background-size .6s cubic-bezier(.165, .84, .44, 1);
+    }
+
+    .hover-underline:hover,
+    .hover-underline.is-active {
+        background-size: 100% .07em;
+        background-position: 0% 100%;
+    }
+}
+
+/* ========================================================================= */
 /* Arrow link */
 /* ========================================================================= */
 

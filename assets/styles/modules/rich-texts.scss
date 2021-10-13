@@ -1,3 +1,168 @@
+/* ========================================================================= */
+/* Rich text: underlines */
+/* ========================================================================= */
+
+.rich-text a {
+    background-image: linear-gradient(to bottom, currentColor, currentColor);
+    background-size: 100% 0.07em;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+}
+
+.rich-text a:hover {
+    animation: underline-slide-out-in 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 1 forwards;
+}
+
+/* ========================================================================= */
+/* Rich text: other styles */
+/* ========================================================================= */
+
+/**
+ * 1. Ensures the long emails break to the line.
+ */
+.rich-text {
+    word-break: break-word; /* [1] */
+}
+
+.rich-text a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/**
+ * Font variations
+ */
+.rich-text b,
+.rich-text strong {
+    font-weight: bold;
+}
+
+.rich-text i,
+.rich-text em {
+    font-style: italic;
+}
+
+/**
+ * Spacings
+ * 1. In flow version: text that should have a top space as
+ *    it is inserted visually after another piece of content.
+ * 2. Not in flow version: text that shouldn't include a top spacing.
+ */
+
+/* [1] */
+.rich-text > p,
+.rich-text > ul,
+.rich-text > ol,
+.rich-text > h2,
+.rich-text > h3,
+.rich-text > h4 {
+    margin-top: var(--space-5);
+}
+
+/* [2] */
+.rich-text:not(.rich-text--in-flow) > p:first-child,
+.rich-text:not(.rich-text--in-flow) > ul:first-child,
+.rich-text:not(.rich-text--in-flow) > ol:first-child,
+.rich-text:not(.rich-text--in-flow) > h2:first-child,
+.rich-text:not(.rich-text--in-flow) > h3:first-child,
+.rich-text:not(.rich-text--in-flow) > h4:first-child {
+    margin-top: 0;
+}
+
+@media (--breakpoint-sm) {
+    /* [1] */
+    .rich-text > p,
+    .rich-text > ul,
+    .rich-text > ol,
+    .rich-text > h2,
+    .rich-text > h3,
+    .rich-text > h4 {
+        margin-top: var(--space-6);
+    }
+
+    /* [2] */
+    .rich-text:not(.rich-text--in-flow) > p:first-child,
+    .rich-text:not(.rich-text--in-flow) > ul:first-child,
+    .rich-text:not(.rich-text--in-flow) > ol:first-child,
+    .rich-text:not(.rich-text--in-flow) > h2:first-child,
+    .rich-text:not(.rich-text--in-flow) > h3:first-child,
+    .rich-text:not(.rich-text--in-flow) > h4:first-child {
+        margin-top: 0;
+    }
+}
+
+/**
+ * Headings
+ */
+.rich-text h3,
+.rich-text h4 {
+    font-weight: bold;
+}
+
+/**
+ * Lists
+ */
+.rich-text ol,
+.rich-text ul {
+    list-style: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+}
+
+.rich-text ol > li,
+.rich-text ul > li {
+    display: flex;
+    overflow: hidden;
+}
+
+.rich-text ol li + li,
+.rich-text ul li + li {
+    margin-top: var(--space-4);
+}
+
+.rich-text ol {
+    counter-reset: item;
+}
+
+.rich-text ol > li {
+    align-items: baseline;
+}
+
+.rich-text ol > li:before {
+    content: counter(item) '.';
+    display: inline-block;
+    margin-right: var(--space-4);
+    counter-increment: item;
+}
+
+.rich-text ul > li {
+    align-items: baseline;
+}
+
+.rich-text ul > li:before {
+    content: '';
+    display: inline-block;
+    width: 0.5em;
+    height: 1px;
+    margin-right: var(--space-4);
+    position: relative;
+    top: -0.3em;
+    flex-shrink: 0;
+    background: var(--black);
+}
+
+.rich-text--collapsed p,
+.rich-text--collapsed ul,
+.rich-text--collapsed ol {
+    margin-top: 0;
+}
+
+/* ========================================================================= */
+/* Rich text: twitter */
+/* ========================================================================= */
+
 .twitter-rich-text a {
     color: #1B95E0;
     transition: color .2s cubic-bezier(0.645, 0.045, 0.355, 1);
