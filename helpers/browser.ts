@@ -2,7 +2,7 @@
 /* Breakpoints */
 /* ========================================================================= */
 
-export type BreakpointType = 'main' | 'sm' | 's' | 'm' | 'l' | 'xl' | 'xxl'
+export type BreakpointType = 'main' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl'
 
 export const breakpoints = {
     main: '0',
@@ -22,8 +22,8 @@ export const isMedia = (query: string): boolean => window.matchMedia(query).matc
 /**
  * Checks whether the current breakpoint matches the provided key.
  */
-export const isBreakpoint = (fromBreakpoint: BreakpointType, toBreakpoint: BreakpointType | null = null) => {
-    [ fromBreakpoint, toBreakpoint ].forEach((breakpoint: BreakpointType | null) => {
+export const isBreakpoint = <B extends BreakpointType>(fromBreakpoint: B, toBreakpoint?: B): boolean => {
+    [ fromBreakpoint, toBreakpoint ].forEach((breakpoint: B | undefined) => {
         if (breakpoint && !breakpoints[breakpoint]) {
             console.warn(`The following breakpoint appears to be missing in the configuration: '${breakpoint}'.`)
         }
@@ -42,9 +42,9 @@ export const isBreakpoint = (fromBreakpoint: BreakpointType, toBreakpoint: Break
  * Returns the current active breakpoint (based on the provided breakpoints,
  * or all of them if not specified).
  */
-export const getBreakpoint = (_breakpoints: BreakpointType[]): BreakpointType | null => {
-    const clonedBreakpoints = [ ...(_breakpoints || Object.keys(breakpoints)) ] as BreakpointType[]
-    return clonedBreakpoints.reverse().find(breakpoint => isBreakpoint(breakpoint)) || null
+export const getBreakpoint = <B extends BreakpointType>(_breakpoints?: B[]): B | undefined => {
+    const clonedBreakpoints = [ ...(_breakpoints || Object.keys(breakpoints)) ] as B[]
+    return clonedBreakpoints.reverse().find(breakpoint => isBreakpoint(breakpoint))
 }
 
 /**

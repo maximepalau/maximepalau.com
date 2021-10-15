@@ -13,7 +13,9 @@ import styles from './styles/catchphrase.module.scss'
 /* Type(s) */
 /* ========================================================================= */
 
-type CatchphraseProps = CatchphraseType & {}
+type CatchphraseProps = CatchphraseType & {
+    isReverted: boolean
+}
 
 /* ========================================================================= */
 /* Function(s) & hook(s) */
@@ -26,7 +28,7 @@ type CatchphraseProps = CatchphraseType & {}
  * 2. Generates a shadow repeated to fill in 10x the screen width.
  * 3. Forces the recalculation of the shadows when the font changes on screen.
  */
-const useMarquee = (ref: RefObject<HTMLElement>) => {
+const useMarquee = ({ ref, duplicationFactor, durationEdgeToEdge }: { ref: RefObject<HTMLElement>, duplicationFactor: number, durationEdgeToEdge: number }) => {
     const isBrowser = typeof window !== 'undefined'
     const [ isFontLoaded, setIsFontLoaded ] = useState(false)
     const [ shadow, setShadow ] = useState('')
@@ -40,12 +42,11 @@ const useMarquee = (ref: RefObject<HTMLElement>) => {
                 return
             }
 
-            const duplicationFactor = 10
-            const durationEdgeToEdge = 7500 * duplicationFactor
+            const durationWithDuplicator = durationEdgeToEdge * duplicationFactor
             const width = ref.current?.offsetWidth
             const ratio = width / viewportWidth
             const duplicationShadow = Math.ceil(ratio * duplicationFactor) + 1
-            const _duration = durationEdgeToEdge * ratio
+            const _duration = durationWithDuplicator * ratio
 
             let _shadow = ''
 
@@ -59,7 +60,7 @@ const useMarquee = (ref: RefObject<HTMLElement>) => {
 
             setShadow(_shadow)
             setDuration(_duration)
-        }, [ viewportWidth, isFontLoaded ])
+        }, [ viewportWidth, isFontLoaded, duplicationFactor, durationEdgeToEdge ])
     }
 
     /* [3] */
@@ -79,12 +80,18 @@ const useMarquee = (ref: RefObject<HTMLElement>) => {
 /* Component(s) */
 /* ========================================================================= */
 
-const Catchphrase: FunctionComponent<CatchphraseProps> = ({ sentence, author, sourceUrl }) => {
+const Catchphrase: FunctionComponent<CatchphraseProps> = ({ sentence, author, sourceUrl, isReverted = false }) => {
     const containerRef = useRef(null)
     const sentenceRef = useRef(null)
     const isVisible = useVisibility(containerRef)
-    const { shadow, duration } = useMarquee(sentenceRef)
-    const breakpoint = useBreakpoint([ 'main', 'm' ], 'main')
+    const breakpoint = useBreakpoint([ 'main', 's', 'm' ], 'main')
+    const durations = { main: 2500, s: 5000, m: 7500 };
+    const { shadow, duration } = useMarquee({
+        ref: sentenceRef,
+        duplicationFactor: 10,
+        durationEdgeToEdge: breakpoint ? durations[breakpoint] : 0,
+    });
+    const authorColorClasses = isReverted ? 'default-text-color default-background-color' : 'inverted-text-color inverted-background-color'
 
     const content = (
         <div
@@ -123,7 +130,7 @@ const Catchphrase: FunctionComponent<CatchphraseProps> = ({ sentence, author, so
                         aria-hidden='true'
                         className={styles.cursorTracker}
                         style={{ transform: `translate(${x}px, ${y}px) translate(-50%, -80%)` }}>
-                        <div className={`${styles.cursorTrackerAction} ${isMoving ? styles.cursorTrackerActionIsVisible : ''} inverted-text-color inverted-background-color type-style-7`}>
+                        <div className={`${styles.cursorTrackerAction} ${isMoving ? styles.cursorTrackerActionIsVisible : ''} ${authorColorClasses} type-style-7`}>
                             {author}
                             <ArrowRightIcon className={styles.cursorTrackerIcon} />
                         </div>
@@ -133,7 +140,7 @@ const Catchphrase: FunctionComponent<CatchphraseProps> = ({ sentence, author, so
                     {content}
                     {author && (
                         <figcaption className={`${styles.authorContainer} m-visually-hidden`}>
-                            <div className={`${styles.author} inverted-text-color inverted-background-color type-style-7`}>
+                            <div className={`${styles.author} ${authorColorClasses} type-style-7`}>
                                 {author}
                                 <ArrowRightIcon className={styles.authorIcon} />
                             </div>

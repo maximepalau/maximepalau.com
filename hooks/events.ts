@@ -100,7 +100,7 @@ export const useViewport = (callback?: () => void, dependencies: any[] = []): Di
  * If no breakpoints are provided, the complete list will be used
  * as a default (as registered in the checkers file).
  */
-export const useBreakpoint = (breakpoints: BreakpointType[], initialValue: BreakpointType | null = null): BreakpointType | null => {
+export const useBreakpoint = <B extends BreakpointType>(breakpoints: B[], initialValue?: B): B | undefined => {
     const [ breakpoint, setBreakpoint ] = useState(initialValue)
 
     useViewport(() => setBreakpoint(getBreakpoint(breakpoints)))
