@@ -3,6 +3,33 @@ import { RefObject, useState, useEffect } from 'react'
 import { BreakpointType, getBreakpoint } from '../helpers/browser'
 
 /* ========================================================================= */
+/* Scroll */
+/* ========================================================================= */
+
+/**
+ * Custom hook to detect whether an element in the page is visible
+ * in the viewport. Relies on the API intersection observer so we can
+ * use it for performance improvements (eg.: plug scrolls, etc.).
+ */
+export const useVisibility = (ref: RefObject<HTMLElement>) => {
+    const [ isVisible, setIsVisible ] = useState(false)
+
+    useEffect(() => {
+        if (!ref.current) return
+
+        const callback = (entries: IntersectionObserverEntry[]) => {
+            const entry = entries[0]
+            setIsVisible(entry.isIntersecting)
+        }
+
+        const observer = new IntersectionObserver(callback)
+        observer.observe(ref.current)
+    }, [])
+
+    return isVisible
+}
+
+/* ========================================================================= */
 /* Keyboard */
 /* ========================================================================= */
 
@@ -45,7 +72,7 @@ type DimensionsType = {
  * 3. Subscribes the callback to the resize event.
  * 4. Removes the resize listener on clean up.
  */
-export const useViewport = (callback: () => void, dependencies: any[] = []): DimensionsType => {
+export const useViewport = (callback?: () => void, dependencies: any[] = []): DimensionsType => {
     const [ dimensions, setDimensions ] = useState<DimensionsType>({ width: null, height: null })
 
     /* [1] */

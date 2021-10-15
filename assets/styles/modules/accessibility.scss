@@ -41,7 +41,6 @@ html[data-whatintent]:not([data-whatintent='keyboard']) *:focus,
  * 2. Places all other links/buttons on top of the expanded action (to preserve
       their ‘clickability’).
  */
-
 .expand-interaction {
     position: relative;
 }
@@ -63,4 +62,39 @@ html[data-whatintent]:not([data-whatintent='keyboard']) *:focus,
 .expand-interaction button:not(.expand-interaction__action) {
     position: relative;
     z-index: 2;
+}
+
+/* ========================================================================= */
+/* Visibility */
+/* ========================================================================= */
+
+/**
+ * Hides the content visually but preserves its access to browsing tools
+ * such as screen readers. If the element receives the focus, the content 
+ * is displayed on screen.
+ */
+.visually-hidden:not(:focus):not(:focus-within):not(:active) {
+    border-width: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+@include media-query('m') {
+    .m-visually-hidden:not(:focus):not(:focus-within):not(:active) {
+        border-width: 0;
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
 }
