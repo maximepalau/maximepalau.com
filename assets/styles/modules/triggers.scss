@@ -93,3 +93,31 @@
         transform: translateY(0);
     }
 }
+
+/* ========================================================================= */
+/* Buttons */
+/* ========================================================================= */
+
+.button {
+    display: inline-block;
+    padding: 1.2rem 1.6rem;
+}
+
+.button--in-flow {
+    margin-top: 2.4rem;
+}
+
+.button--outline {
+    border: 1px solid currentColor;
+    transition: border-color .2s ease-out;
+}
+
+.button--outline:hover {
+    border-color: var(--dark-grey);
+}
+
+@include media-query('m') {
+    .button--in-flow {
+        margin-top: 4rem;
+    }
+}

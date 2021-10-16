@@ -18,6 +18,7 @@ import {
 import BlockContentType from '@/types/block-content'
 
 import { Page, PageHero, PageMain, PageSection, PageFooter } from '@/components/globals/page'
+import ContactButton from '@/components/globals/contact-button'
 import Navigation from '@/components/globals/navigation'
 import Catchphrase from '@/components/globals/catchphrase'
 import Hero from '@/components/globals/hero'
@@ -75,7 +76,7 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
         infoContact: {
             heading: 'Info & contact',
             id: 'info-contact',
-            isEnabled: true,
+            isEnabled: props.infoContactTextRaw,
         },
         projects: {
             heading: 'Projects',
@@ -112,31 +113,64 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
             <PageMain>
                 {/* Info & contact */}
                 {sections.infoContact.isEnabled && (
-                    <PageSection id={sections.infoContact.id}>
+                    <PageSection
+                        className='section'
+                        id={sections.infoContact.id}>
                         <Catchphrase {...(props.infoContactCatchphrase || {})} />
-                        <h2>{sections.infoContact.heading}</h2>
-                        <BlockContent blocks={props.infoContactTextRaw} />
-                        <address>
-                            <a href={props.infoContactEmail}>Contact me by email</a>
-                            <ul>
-                                <li>
-                                    <button type='button'>Copy email</button>
-                                </li>
-                                <li>
-                                    <a href={props.infoContactEmail}>Contact me by LinkedIn</a>
-                                </li>
-                            </ul>
-                        </address>
+
+                        <div className='container'>
+                            <div className='section__content'>
+                                {/* Heading */}
+                                <div className='section__left'>
+                                    <h2 className='type-style-6 uppercase'>
+                                        {sections.infoContact.heading}
+                                    </h2>
+                                </div>
+
+                                <div className='section__right'>
+                                    {/* Text */}
+                                    <BlockContent className='rich-text type-style-5' blocks={props.infoContactTextRaw} />
+
+                                    {/* Contact button */}
+                                    {props.infoContactEmail && (
+                                        <div className='section__action'>
+                                            <ContactButton
+                                                email={props.infoContactEmail}
+                                                linkedinUrl={props.globals.linkedinUrl} />
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
                     </PageSection>
                 )}
 
                 {/* Projects */}
                 {sections.projects.isEnabled && (
-                    <PageSection id={sections.projects.id}>
-                        <Catchphrase {...(props.projectsCatchphrase || {})} />
-                        <h2>{sections.projects.heading}</h2>
-                        <BlockContent blocks={props.projectsTextRaw} />
-                        <ProjectList posts={props.projects} />
+                    <PageSection
+                        className='section inverted-text-color inverted-background-color'
+                        id={sections.projects.id}>
+                        <Catchphrase isReverted {...(props.projectsCatchphrase || {})} />
+
+                        <div className='container'>
+                            <div className='section__content'>
+                                {/* Heading */}
+                                <div className='section__left'>
+                                    <h2 className='type-style-6 uppercase'>
+                                        {sections.projects.heading}
+                                    </h2>
+                                </div>
+
+                                <div className='section__right'>
+                                    {/* Text */}
+                                    <BlockContent className='rich-text type-style-5' blocks={props.projectsTextRaw} />
+                                </div>
+
+                                <div className='section__full'>
+                                    <ProjectList posts={props.projects} />
+                                </div>
+                            </div>
+                        </div>
                     </PageSection>
                 )}
 

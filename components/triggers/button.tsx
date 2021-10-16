@@ -1,5 +1,4 @@
 import React, { ElementType, ComponentPropsWithoutRef } from 'react'
-import { useRouter } from 'next/router'
 
 import { checkExternalLink } from '@/helpers/location'
 
@@ -24,10 +23,9 @@ type ButtonProps<C extends ElementType> = Props<C> & Omit<ComponentPropsWithoutR
 const Button = <C extends ElementType = 'button'> ({
     as,
     variant = 'default',
-    className = '',
+    className = 'button button--outline button--in-flow',
     ...remainingProps
 }: ButtonProps<C>) => {
-    const router = useRouter()
     const defaultAttributes = {} as ComponentPropsWithoutRef<C>
     const Component = as || 'button'
 
@@ -47,7 +45,7 @@ const Button = <C extends ElementType = 'button'> ({
 
     return (
         <Component
-            className={`type-style-7 ${className}`}
+            className={`type-style-6 ${className}`}
             {...defaultAttributes}
             {...remainingProps} />
     )

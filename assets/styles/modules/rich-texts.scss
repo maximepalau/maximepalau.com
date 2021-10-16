@@ -57,7 +57,7 @@
 .rich-text > h2,
 .rich-text > h3,
 .rich-text > h4 {
-    margin-top: var(--space-5);
+    margin-top: 2.4rem;
 }
 
 /* [2] */
@@ -70,7 +70,7 @@
     margin-top: 0;
 }
 
-@media (--breakpoint-sm) {
+@include media-query('s') {
     /* [1] */
     .rich-text > p,
     .rich-text > ul,
@@ -78,7 +78,7 @@
     .rich-text > h2,
     .rich-text > h3,
     .rich-text > h4 {
-        margin-top: var(--space-6);
+        margin-top: 4rem;
     }
 
     /* [2] */
@@ -119,7 +119,7 @@
 
 .rich-text ol li + li,
 .rich-text ul li + li {
-    margin-top: var(--space-4);
+    margin-top: 2.4rem;
 }
 
 .rich-text ol {
@@ -133,7 +133,7 @@
 .rich-text ol > li:before {
     content: counter(item) '.';
     display: inline-block;
-    margin-right: var(--space-4);
+    margin-right: 2.4rem;
     counter-increment: item;
 }
 
@@ -146,11 +146,11 @@
     display: inline-block;
     width: 0.5em;
     height: 1px;
-    margin-right: var(--space-4);
+    margin-right: 2.4rem;
     position: relative;
     top: -0.3em;
     flex-shrink: 0;
-    background: var(--black);
+    background: currentColor;
 }
 
 .rich-text--collapsed p,

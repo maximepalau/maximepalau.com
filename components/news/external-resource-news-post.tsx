@@ -4,7 +4,7 @@ import {
     ExternalResourceNewsPost as ExternalResourceNewsPostType,
 } from '@/types/cms'
 
-import ArrowLink from '@/components/globals/arrow-link'
+import ArrowLink from '@/components/triggers/arrow-link'
 
 import styles from './styles/news-post.module.scss'
 

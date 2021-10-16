@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, RefObject, useState, useLayoutEffect, useRef, useEffect } from 'react'
+import React, { FunctionComponent, RefObject, useState, useLayoutEffect, useRef, useEffect } from 'react'
 
 import { Catchphrase as CatchphraseType } from '@/types/cms'
 
@@ -124,7 +124,7 @@ const Catchphrase: FunctionComponent<CatchphraseProps> = ({ sentence, author, so
             target='_blank'
             rel='noopener'>
             <CursorTrackerArea
-                isEnabled={breakpoint !== 'main'}
+                isEnabled={breakpoint === 'm'}
                 renderCursorTracker={({ x, y, isMoving }) => (
                     <div
                         aria-hidden='true'

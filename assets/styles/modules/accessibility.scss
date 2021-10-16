@@ -25,7 +25,7 @@ html[data-locked='true'] body {
  *    need the focus ring here.
  */
 html[data-whatintent]:not([data-whatintent='keyboard']) *:focus,
-[tabindex='-1']:focus {
+[tabindex='-1']:not(.show-focus):focus {
     outline: none;
 }
 

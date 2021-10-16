@@ -157,16 +157,6 @@ body,
         line-height: calc(26 / 20);
     }
 
-    body,
-    .type-style-6,
-    .m-type-style-6 {
-        font-family: 'Arobase', 'Aaux', 'sans-serif';
-        font-style: normal;
-        font-weight: normal;
-        font-size: 2rem;
-        line-height: calc(26 / 20);
-    }
-
     .m-type-style-7 {
         font-family: 'Arobase', 'Aaux', 'sans-serif';
         font-style: normal;
@@ -174,4 +164,12 @@ body,
         font-size: 1.6rem;
         line-height: calc(23 / 16);
     }
+}
+
+/* ========================================================================= */
+/* Font variants */
+/* ========================================================================= */
+
+.uppercase {
+    text-transform: uppercase;
 }
