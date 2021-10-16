@@ -27,7 +27,7 @@ const TwitterNewsPost: FunctionComponent<TwitterNewsPostProps> = ({ surtitle, te
             )}
 
             {/* Text */}
-            <div className={`${styles.text} type-style-4 m-type-style-5 twitter-rich-text`}>
+            <div className={`${styles.text} type-style-5 twitter-rich-text`}>
                 <BlockContent blocks={textRaw} />
             </div>
 

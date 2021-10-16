@@ -136,6 +136,7 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                                         <div className='section__action'>
                                             <ContactButton
                                                 email={props.infoContactEmail}
+                                                id='info-contact-contact-button'
                                                 linkedinUrl={props.globals.linkedinUrl} />
                                         </div>
                                     )}
@@ -202,17 +203,15 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
             <PageFooter>
                 <h2>{props.footerHeading}</h2>
                 <BlockContent blocks={props.footerTextRaw} />
-                <address>
-                    <a href={props.footerEmail}>Contact me by email</a>
-                    <ul>
-                        <li>
-                            <button type='button'>Copy email</button>
-                        </li>
-                        <li>
-                            <a href={props.infoContactEmail}>Contact me by LinkedIn</a>
-                        </li>
-                    </ul>
-                </address>
+                {/* Contact button */}
+                {props.infoContactEmail && (
+                    <div className='section__action'>
+                        <ContactButton
+                            email={props.infoContactEmail}
+                            id='info-contact-contact-button'
+                            linkedinUrl={props.globals.linkedinUrl} />
+                    </div>
+                )}
                 <address aria-label='Social media'>
                     <ul>
                         {props.globals?.twitterUrl && (

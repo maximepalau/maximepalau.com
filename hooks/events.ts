@@ -1,4 +1,4 @@
-import { RefObject, useState, useEffect } from 'react'
+import { RefObject, useState, useEffect, useCallback } from 'react'
 
 import { BreakpointType, getBreakpoint } from '../helpers/browser'
 
@@ -111,14 +111,16 @@ export const useBreakpoint = <B extends BreakpointType>(breakpoints: B[], initia
 /**
  * Subscribes to an element dimensions.
  */
-export const useDimensions = (ref: RefObject<HTMLElement>) => {
+export const useDimensions = () => {
     const [ dimensions, setDimensions ] = useState<DOMRect | null>(null)
+    const { width, height } = useViewport()
 
-    useViewport(() => {
-        setDimensions(ref.current?.getBoundingClientRect() || null)
-    }, [ ref.current ])
+    const ref = useCallback(node => {
+        node && setDimensions(node.getBoundingClientRect())
+    }, [ width, height ])
+    
 
-    return dimensions
+    return { dimensions, ref }
 }
 
 /* ========================================================================= */

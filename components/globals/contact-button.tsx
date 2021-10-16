@@ -9,6 +9,7 @@ import ChoicesButton from '@/components/triggers/choices-button'
 type ContactButtonProps = {
     email: string
     linkedinUrl: string
+    id?: string
 }
 
 /* ========================================================================= */
@@ -50,7 +51,7 @@ const useClipboard = () => {
  * 1. Adds the copy email option if supported.
  * 2. Adds the LinkedIn link if provided.
  */
-const ContactButton: FunctionComponent<ContactButtonProps> = ({ email, linkedinUrl }) => {
+const ContactButton: FunctionComponent<ContactButtonProps> = ({ email, linkedinUrl, id }) => {
     const { write: writeOnClipboard, isSupported: isClipboardSupported } = useClipboard()
     const [ isCopied, setIsCopied ] = useState(false)
     const choices = []
@@ -80,7 +81,8 @@ const ContactButton: FunctionComponent<ContactButtonProps> = ({ email, linkedinU
             <ChoicesButton
                 as='a'
                 href={`mailto:${email}`}
-                choices={choices}>
+                choices={choices}
+                id={id}>
                 Send me an email
             </ChoicesButton>
         </address>

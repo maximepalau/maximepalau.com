@@ -28,7 +28,7 @@ const ExternalResourceNewsPost: FunctionComponent<ExternalResourceNewsPostProps>
             )}
 
             {/* Heading */}
-            <h3 className={`${styles.text} type-style-3 m-type-style-4`}>
+            <h3 className={`${styles.text} type-style-4`}>
                 <a
                     className='expand-interaction__action'
                     href={resourceUrl}

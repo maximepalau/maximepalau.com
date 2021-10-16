@@ -31,10 +31,9 @@ type NavigationProps = {
 /* ========================================================================= */
 
 const Navigation: FunctionComponent<NavigationProps> = ({ sections, globals }) => {
-    const navigationRef = useRef(null)
     const openButtonRef = useRef<HTMLElement>(null)
     const closeButtonRef = useRef<HTMLElement>(null)
-    const dimensions = useDimensions(navigationRef)
+    const { dimensions, ref: navigationRef } = useDimensions()
 
     return (
         <>

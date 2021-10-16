@@ -1,0 +1,57 @@
+.container {
+    margin: -1px -2.4rem 0;
+    padding: 1.6rem 2.4rem;
+    border-top: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+}
+
+.title {
+    margin-left: -.05em;
+}
+
+.content {
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.meta {
+    display: flex;
+    align-items: baseline;
+    margin-top: .8rem;
+    overflow: hidden;
+    padding-right: 1.6rem;
+}
+
+.metaKey {
+    padding-right: .8rem;
+    font-size: 1.4rem;
+    opacity: .8;
+}
+
+.metaValue {
+    margin: 0;
+    text-overflow: ellipsis;
+    text-overflow: ' (...)';
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.button {
+    flex-shrink: 0;
+    padding: 0;
+    color: currentColor;
+}
+
+/* ========================================================================= */
+/* From small tablet */
+/* ========================================================================= */
+
+@include media-query('s') {
+    .container {
+        margin: -1px -4rem 0;
+        padding: 1.6rem 4rem;
+    }
+}
