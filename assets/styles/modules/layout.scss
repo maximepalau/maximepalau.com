@@ -33,6 +33,10 @@
     margin-top: 4rem;
 }
 
+.section__content--tight {
+    margin-top: 2.4rem;
+}
+
 .section__full {
     width: 100%;
 }
@@ -50,6 +54,14 @@
     margin-top: 2.4rem;
 }
 
+.section__content--outline::before {
+    content: '';
+    display: block;
+    width: 100%;
+    margin: 0 0 2.4rem;
+    border-top: 1px solid currentColor;
+}
+
 @include media-query('s') {
     .section__right {
         margin-top: 4rem;
@@ -57,6 +69,10 @@
 
     .section__action {
         margin-top: 4rem;
+    }
+
+    .section__content--outline::before {
+        margin: 0 0 2.4rem;
     }
 }
 
@@ -73,6 +89,10 @@
         margin-right: -2.4rem;
     }
 
+    .section__content--tight {
+        margin-top: 2.4rem;
+    }
+
     .section__left {
         width: calc(6 / 16 * 100%);
         padding: 0 2.4rem;
@@ -82,5 +102,9 @@
         width: calc(10 / 16 * 100%);
         margin-top: 0;
         padding: 0 2.4rem;
+    }
+
+    .section__content--outline::before {
+        margin: 0 2.4rem 2.4rem;
     }
 }

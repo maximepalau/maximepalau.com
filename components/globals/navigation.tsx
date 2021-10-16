@@ -17,7 +17,7 @@ type NavigationProps = {
     sections: {
         heading: string
         id: string
-        isEnabled: boolean
+        isEnabled?: boolean
     }[]
     globals: {
         githubUrl?: string | null
@@ -65,7 +65,7 @@ const Navigation: FunctionComponent<NavigationProps> = ({ sections, globals }) =
                         <CrossIcon />
                     </button>
                     <ul className={`${styles.list} type-style-6 list-reset`}>
-                        {sections.map((section) => section.isEnabled && (
+                        {sections.map((section) => section?.isEnabled && (
                             <li
                                 className={`${styles.item}`}
                                 key={'navigation-item-' + section.id}>

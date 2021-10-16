@@ -14,7 +14,7 @@ import styles from './styles/catchphrase.module.scss'
 /* ========================================================================= */
 
 type CatchphraseProps = CatchphraseType & {
-    isReverted: boolean
+    isReverted?: boolean
 }
 
 /* ========================================================================= */

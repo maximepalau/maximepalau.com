@@ -76,7 +76,7 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
         infoContact: {
             heading: 'Info & contact',
             id: 'info-contact',
-            isEnabled: props.infoContactTextRaw,
+            isEnabled: !!props.infoContactTextRaw,
         },
         projects: {
             heading: 'Projects',
@@ -86,7 +86,7 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
         articles: {
             heading: 'Articles',
             id: 'articles',
-            isEnabled: true,
+            isEnabled: false,
         },
         interests: {
             heading: 'Interests',
@@ -189,13 +189,37 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                 {sections.interests.isEnabled && (
                     <PageSection id={sections.interests.id}>
                         <Catchphrase {...(props.interestsCatchphrase || {})} />
-                        <h2>{sections.interests.heading}</h2>
-                        {props.interests?.map((interest, idx) => (
-                            <section key={`interest-${idx}`}>
-                                <h3>{interest.heading}</h3>
-                                <BlockContent blocks={interest.textRaw} />
-                            </section>
-                        ))}
+                        
+                        <div className='container'>
+                            <div className='section__content'>
+                                {/* Heading */}
+                                <div className='section__left'>
+                                    <h2 className='type-style-6 uppercase'>
+                                        {sections.interests.heading}
+                                    </h2>
+                                </div>
+
+                                <div className='section__full' />
+                            </div>
+
+                            {props.interests?.map((interest, idx) => (
+                                <section
+                                    className={`section__content section__content--outline ${idx === 0 ? 'section__content--tight' : ''}`}
+                                    key={`interest-${idx}`}>
+                                    {/* Heading */}
+                                    <div className='section__left'>
+                                        <h3 className='type-style-6 uppercase'>
+                                            {interest.heading}
+                                        </h3>
+                                    </div>
+                                    
+                                    {/* Text */}
+                                    <div className='section__right rich-text type-style-5'>
+                                        <BlockContent blocks={interest.textRaw} />
+                                    </div>
+                                </section>
+                            ))}
+                        </div>
                     </PageSection>
                 )}
             </PageMain>
