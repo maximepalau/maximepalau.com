@@ -58,7 +58,7 @@ const CursorTrackerArea: FunctionComponent<CursorAreaProps> = ({ renderCursorTra
 
         const ignoreMouseMoves = () => {
             removeEventListener('mousemove', syncCursorPosition)
-            setIsMoving(false)
+            setTimeout(() => setIsMoving(false), 100)
         }
 
         areaRef.current.addEventListener('mouseenter', listenMouseMoves)
