@@ -12,7 +12,7 @@ import styles from './styles/news-post.module.scss'
 /* Type(s) */
 /* ========================================================================= */
 
-type ArticleNewsPostProps = ArticleNewsPostType & {}
+type ArticleNewsPostProps = ArticleNewsPostType
 
 /* ========================================================================= */
 /* Component(s) */

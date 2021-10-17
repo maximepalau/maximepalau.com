@@ -51,7 +51,7 @@ export const useMarquee = ({ ref, duplicationFactor, durationEdgeToEdge }: { ref
 
     /* [3] */
     useEffect(() => {
-        document.fonts?.ready?.then?.(() => {
+        (document as any).fonts?.ready?.then?.(() => {
             requestNextAnimationFrame(() => setIsFontLoaded(true))
         })
     }, [])

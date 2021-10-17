@@ -11,7 +11,7 @@ import styles from './styles/news-post.module.scss'
 /* Type(s) */
 /* ========================================================================= */
 
-type TwitterNewsPostProps = TwitterNewsPostType & {}
+type TwitterNewsPostProps = TwitterNewsPostType
 
 /* ========================================================================= */
 /* Component(s) */

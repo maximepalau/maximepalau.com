@@ -30,7 +30,7 @@ import ArticleList from '@/components/articles/article-list'
 /* Type(s) */
 /* ========================================================================= */
 
-type HomePageProps = {
+export type HomePageProps = {
     articles: ArticleType[]
     articlesCatchphrase: CatchphraseType
     articlesTextRaw: BlockContentType

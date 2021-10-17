@@ -22,7 +22,8 @@
         "preserveConstEnums": true,
         "sourceMap": true,
         "forceConsistentCasingInFileNames": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "declaration": true,
     },
     "exclude": [ "dist", ".next", "out", "next.config.js" ],
     "include": [ "next-env.d.ts", "**/*.ts", "**/*.tsx", "types/block-content-to-react.d.ts", "types/index.d.ts" ]

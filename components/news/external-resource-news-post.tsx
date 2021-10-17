@@ -12,7 +12,7 @@ import styles from './styles/news-post.module.scss'
 /* Type(s) */
 /* ========================================================================= */
 
-type ExternalResourceNewsPostProps = ExternalResourceNewsPostType & {}
+type ExternalResourceNewsPostProps = ExternalResourceNewsPostType
 
 /* ========================================================================= */
 /* Component(s) */

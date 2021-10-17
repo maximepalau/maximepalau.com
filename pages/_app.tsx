@@ -1,20 +1,10 @@
 import React from 'react'
+import { AppProps } from 'next/app'
 import 'wicg-inert'
 
 import { ThemeProvider } from '@/contexts/theme'
 
 import '@/assets/styles/index.scss'
-
-/* ========================================================================= */
-/* Typing */
-/* ========================================================================= */
-
-interface AppProps {
-    Component: React.FunctionComponent
-    pageProps: {
-        [key: string]: any
-    }
-}
 
 /* ========================================================================= */
 /* Component(s) */

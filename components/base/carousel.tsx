@@ -19,20 +19,20 @@ type CarouselProps = {
     transitionTime?: number
 } & ComponentPropsWithoutRef<'section'>
 
-type CarouselTrackProps = {} & ComponentPropsWithoutRef<'div'>
+type CarouselTrackProps = ComponentPropsWithoutRef<'div'>
 
 type CarouselSlideProps = {
     index: number
     label?: string | null
 } & ComponentPropsWithoutRef<'div'>
 
-type CarouselPrevButtonProps = {} & ComponentPropsWithoutRef<'button'>
+type CarouselPrevButtonProps = ComponentPropsWithoutRef<'button'>
 
-type CarouselNextButtonProps = {} & ComponentPropsWithoutRef<'button'>
+type CarouselNextButtonProps = ComponentPropsWithoutRef<'button'>
 
-type CarouselPaginationProps = {} & ComponentPropsWithoutRef<'div'>
+type CarouselPaginationProps = ComponentPropsWithoutRef<'div'>
 
-type CarouselProgressProps = {} & ComponentPropsWithoutRef<'div'>
+type CarouselProgressProps = ComponentPropsWithoutRef<'div'>
 
 type CarouselContextType = {
     ids: {
@@ -162,7 +162,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({
 
     /* [1] */
     const { index, decrement, increment } = useLoopingIndex({
-        initialIndex: 0,
+        initialIndex,
         total,
         onChange: () => setIsSliding(true),
     })

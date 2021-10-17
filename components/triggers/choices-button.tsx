@@ -14,12 +14,11 @@ import { useKeyboard } from '@/hooks/events'
 
 interface Props<C extends ElementType> {
     as?: C
-    variant?: 'default' | 'arrow'
     choices?: {
         label: string
         callback: () => void
     }[]
-    isReverted: boolean
+    isReverted?: boolean
 }
 
 type ChoicesButtonProps<C extends ElementType> = Props<C> & Omit<ComponentPropsWithoutRef<C>, keyof Props<C>>
@@ -33,7 +32,6 @@ type ChoicesButtonProps<C extends ElementType> = Props<C> & Omit<ComponentPropsW
  */
 const ChoicesButton = <C extends ElementType = 'button'> ({
     as,
-    variant = 'default',
     className = 'button button--outline button-reset',
     choices,
     id,
@@ -67,6 +65,7 @@ const ChoicesButton = <C extends ElementType = 'button'> ({
 
     return (
         <div className={`${styles.container}`}>
+            {/* Button */}
             <Component
                 className={`${styles.button} type-style-6 ${className}`}
                 id={id}
@@ -74,6 +73,7 @@ const ChoicesButton = <C extends ElementType = 'button'> ({
                 {...remainingProps} />
             {choices && choices?.length > 0 && (
                 <>
+                    {/* Option button */}
                     <div className={`${styles.toggleWrapper}`}>
                         <button
                             aria-label={isOpen ? 'Collapse options' : 'Expand options'}
@@ -90,6 +90,8 @@ const ChoicesButton = <C extends ElementType = 'button'> ({
                             )}
                         </button>
                     </div>
+
+                    {/* Options */}
                     <ul
                         className={`${styles.list} list-reset show-focus ${isReverted ? 'inverted-text-color inverted-background-color' : 'default-text-color default-background-color'}`}
                         onFocusCapture={() => setIsOpen(true)}

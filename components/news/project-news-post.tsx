@@ -12,7 +12,8 @@ import styles from './styles/news-post.module.scss'
 /* Type(s) */
 /* ========================================================================= */
 
-type ProjectNewsPostProps = ProjectNewsPostType & {}
+type ProjectNewsPostProps = ProjectNewsPostType
+
 export type ProjectNewsPost = {
     __typename: 'ProjectNewsPost'
     heading: string

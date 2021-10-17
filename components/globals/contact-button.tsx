@@ -24,7 +24,7 @@ const useClipboard = () => {
 
     useEffect(() => {
         navigator?.permissions
-            ?.query({ name: 'clipboard-write' })
+            ?.query({ name: 'clipboard-write' as PermissionName })
             ?.then(result => {
                 if (result.state === 'granted' || result.state === 'prompt') {
                     setIsClipboardSupported(true)
@@ -58,16 +58,16 @@ const ContactButton: FunctionComponent<ContactButtonProps> = ({ email, linkedinU
 
     /* [1] */
     if (isClipboardSupported) {
-        choices.push({ label:
-            isCopied ? 'Copied!' : 'Copy email address',
+        choices.push({
+            label: isCopied ? 'Copied!' : 'Copy email address',
             callback: () => (writeOnClipboard(email || ''), setIsCopied(true)),
         })
     }
 
     /* [2] */
     if (linkedinUrl) {
-        choices.push({ label:
-            'Contact me on LinkedIn',
+        choices.push({
+            label: 'Contact me on LinkedIn',
             callback: () => open(linkedinUrl, '_blank')?.focus()
         })
     }

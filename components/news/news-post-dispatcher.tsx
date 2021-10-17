@@ -26,14 +26,14 @@ type NewsPostDispatcherProps = {
 
 const NewsPostDispatcher: FunctionComponent<NewsPostDispatcherProps> = ({ post }) => {
     switch (post.__typename) {
-        case 'ArticleNewsPost':
-            return <ArticleNewsPost {...post} />
-        case 'ExternalResourceNewsPost':
-            return <ExternalResourceNewsPost {...post} />
-        case 'ProjectNewsPost':
-            return <ProjectNewsPost {...post} />
-        case 'TwitterNewsPost':
-            return <TwitterNewsPost {...post} />
+    case 'ArticleNewsPost':
+        return <ArticleNewsPost {...post} />
+    case 'ExternalResourceNewsPost':
+        return <ExternalResourceNewsPost {...post} />
+    case 'ProjectNewsPost':
+        return <ProjectNewsPost {...post} />
+    case 'TwitterNewsPost':
+        return <TwitterNewsPost {...post} />
     }
 }
 

@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import BlockContent from '@sanity/block-content-to-react'
 
 import { Article as ArticleType } from '@/types/cms'
 
@@ -7,7 +6,7 @@ import { Article as ArticleType } from '@/types/cms'
 /* Type(s) */
 /* ========================================================================= */
 
-type ArticleProps = ArticleType & {}
+type ArticleProps = ArticleType
 
 /* ========================================================================= */
 /* Component(s) */

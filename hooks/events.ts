@@ -269,7 +269,7 @@ export const useSwipes = (
         }
 
         /* [6] */
-        const ignoreMoves = (e: TouchEvent | MouseEvent) => {
+        const ignoreMoves = () => {
             /* [6.1] */
             elementRef.current?.removeEventListener('touchmove', trackTouchMoves)
             elementRef.current?.removeEventListener('mousemove', trackMouseMoves)

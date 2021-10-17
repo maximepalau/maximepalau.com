@@ -8,11 +8,11 @@ import styles from './styles/page.module.scss'
 /* Type(s) */
 /* ========================================================================= */
 
-type PageProps = {} & ComponentPropsWithoutRef<'div'>
+type PageProps = ComponentPropsWithoutRef<'div'>
 
-type PageHeroProps = {} & ComponentPropsWithoutRef<'header'>
+type PageHeroProps = ComponentPropsWithoutRef<'header'>
 
-type PageMainProps = {} & ComponentPropsWithoutRef<'main'>
+type PageMainProps = ComponentPropsWithoutRef<'main'>
 
 type PageSectionProps = {
     isDarkMode?: boolean

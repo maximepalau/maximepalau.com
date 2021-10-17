@@ -8,7 +8,6 @@ import { checkExternalLink } from '@/helpers/location'
 
 interface Props<C extends ElementType> {
     as?: C
-    variant?: 'default' | 'arrow'
 }
 
 type ButtonProps<C extends ElementType> = Props<C> & Omit<ComponentPropsWithoutRef<C>, keyof Props<C>>
@@ -22,7 +21,6 @@ type ButtonProps<C extends ElementType> = Props<C> & Omit<ComponentPropsWithoutR
  */
 const Button = <C extends ElementType = 'button'> ({
     as,
-    variant = 'default',
     className = 'button button--outline button--in-flow button-reset',
     ...remainingProps
 }: ButtonProps<C>) => {

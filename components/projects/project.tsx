@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef, useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import BlockContent from '@sanity/block-content-to-react'
 
 import { Project as ProjectType } from '@/types/cms'
@@ -13,7 +13,7 @@ import styles from './styles/project.module.scss'
 /* Type(s) */
 /* ========================================================================= */
 
-type ProjectProps = ProjectType & {}
+type ProjectProps = ProjectType
 
 /* ========================================================================= */
 /* Component(s) */

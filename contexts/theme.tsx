@@ -52,8 +52,6 @@ const cursorReducer = (state: ThemeStateType, action: ThemeActionType): ThemeSta
             ...state,
             activeMode: action.data,
         }
-    default:
-        throw new Error(`Unhandled action type: ${action.type}`)
     }
 }
 
