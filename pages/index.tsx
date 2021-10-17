@@ -20,6 +20,7 @@ import BlockContentType from '@/types/block-content'
 import { Page, PageHero, PageMain, PageSection, PageFooter } from '@/components/globals/page'
 import ContactButton from '@/components/globals/contact-button'
 import Navigation from '@/components/globals/navigation'
+import Footer from '@/components/globals/footer'
 import Catchphrase from '@/components/globals/catchphrase'
 import Hero from '@/components/globals/hero'
 import ProjectList from '@/components/projects/project-list'
@@ -70,8 +71,6 @@ export const getStaticProps = async () => {
 /* ========================================================================= */
 
 export const HomePage: FunctionComponent<HomePageProps> = props => {
-    console.log(props)
-
     const sections = {
         infoContact: {
             heading: 'Info & contact',
@@ -149,7 +148,7 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                 {/* Projects */}
                 {sections.projects.isEnabled && (
                     <PageSection
-                        className='section inverted-text-color inverted-background-color'
+                        className='section dark-mode default-text-color default-background-color'
                         id={sections.projects.id}>
                         <Catchphrase isReverted {...(props.projectsCatchphrase || {})} />
 
@@ -225,36 +224,11 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
             </PageMain>
 
             <PageFooter>
-                <h2>{props.footerHeading}</h2>
-                <BlockContent blocks={props.footerTextRaw} />
-                {/* Contact button */}
-                {props.infoContactEmail && (
-                    <div className='section__action'>
-                        <ContactButton
-                            email={props.infoContactEmail}
-                            id='info-contact-contact-button'
-                            linkedinUrl={props.globals.linkedinUrl} />
-                    </div>
-                )}
-                <address aria-label='Social media'>
-                    <ul>
-                        {props.globals?.twitterUrl && (
-                            <li>
-                                <a href={props.globals.twitterUrl}>Twitter</a>
-                            </li>
-                        )}
-                        {props.globals?.linkedinUrl && (
-                            <li>
-                                <a href={props.globals.linkedinUrl}>LinkedIn</a>
-                            </li>
-                        )}
-                        {props.globals?.githubUrl && (
-                            <li>
-                                <a href={props.globals.githubUrl}>Github</a>
-                            </li>
-                        )}
-                    </ul>
-                </address>
+                <Footer
+                    heading={props.footerHeading}
+                    text={props.footerTextRaw}
+                    email={props.infoContactEmail}
+                    globals={props.globals} />
             </PageFooter>
         </Page>
     )

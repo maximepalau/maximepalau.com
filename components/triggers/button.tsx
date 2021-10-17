@@ -23,7 +23,7 @@ type ButtonProps<C extends ElementType> = Props<C> & Omit<ComponentPropsWithoutR
 const Button = <C extends ElementType = 'button'> ({
     as,
     variant = 'default',
-    className = 'button button--outline button--in-flow',
+    className = 'button button--outline button--in-flow button-reset',
     ...remainingProps
 }: ButtonProps<C>) => {
     const defaultAttributes = {} as ComponentPropsWithoutRef<C>

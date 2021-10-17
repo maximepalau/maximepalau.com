@@ -1,0 +1,39 @@
+/* ========================================================================= */
+/* From mobile */
+/* ========================================================================= */
+
+.container {
+    width: 100%;
+    padding-bottom: .8rem;
+    overflow: hidden;
+}
+
+.sentence {
+    display: inline-block;
+    padding: 0;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.sentence::after {
+    content: '-';
+    display: inline-block;
+    margin: 0 .8rem;
+}
+
+.sentenceIsAnimated {
+    animation: marquee-closing infinite linear;
+    will-change: none;
+}
+
+/* ========================================================================= */
+/* Keyframes */
+/* ========================================================================= */
+
+@keyframes marquee-closing {
+    from {
+        transform: translate3d(0, 0, 0);
+    } to {
+        transform: translate3d(-1000%, 0, 0);
+    }
+}

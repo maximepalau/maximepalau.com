@@ -34,7 +34,7 @@
 }
 
 .section__content--tight {
-    margin-top: 2.4rem;
+    margin-top: 1.6rem;
 }
 
 .section__full {
@@ -58,7 +58,7 @@
     content: '';
     display: block;
     width: 100%;
-    margin: 0 0 2.4rem;
+    margin: 0 0 1.6rem;
     border-top: 1px solid currentColor;
 }
 
@@ -72,7 +72,11 @@
     }
 
     .section__content--outline::before {
-        margin: 0 0 2.4rem;
+        margin: 0 0 1.6rem;
+    }
+
+    .section__content--outline .section__right {
+        margin-top: 2.4rem;
     }
 }
 
@@ -102,6 +106,10 @@
         width: calc(10 / 16 * 100%);
         margin-top: 0;
         padding: 0 2.4rem;
+    }
+
+    .section__content--outline .section__right {
+        margin-top: 0;
     }
 
     .section__content--outline::before {

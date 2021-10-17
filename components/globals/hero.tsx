@@ -32,34 +32,28 @@ const Hero: FunctionComponent<HeroProps> = ({ heading, introduction, news }) => 
 
     return (
         <div className={styles.container}>
-            {/* Left */}
-            {/* <div className={styles.leftColumn}> */}
-                {/* Brand */}
-                <div className={styles.brand}>
-                    <h1 className='type-style-7'>{heading}</h1>
-                </div>
+            {/* Brand */}
+            <div className={styles.brand}>
+                <h1 className='type-style-7'>{heading}</h1>
+            </div>
 
-                {/* Introduction */}
-                <div className={styles.introductionWrapper}>
-                    <div className={`${styles.introduction} type-style-2 m-type-style-3`}>
-                        <BlockContent blocks={introduction} />
-                    </div>
-                    <a
-                        className={`${styles.scrollLink} scroll-link type-style-7`}
-                        href='#page-content'>
-                        Scroll down
-                        <ArrowDownIcon className={`${styles.scrollLinkIcon} scroll-link__icon`} />
-                    </a>
+            {/* Introduction */}
+            <div className={styles.introductionWrapper}>
+                <div className={`${styles.introduction} type-style-2 m-type-style-3`}>
+                    <BlockContent blocks={introduction} />
                 </div>
-            {/* </div> */}
+                <a
+                    className={`${styles.scrollLink} scroll-link type-style-7`}
+                    href='#page-content'>
+                    Scroll down
+                    <ArrowDownIcon className={`${styles.scrollLinkIcon} scroll-link__icon`} />
+                </a>
+            </div>
 
-            {/* Right */}
-            {/* <div className={styles.rightColumn}> */}
-                {/* News */}
-                <div className={styles.news}>
-                    <FeaturedNews posts={news} />
-                </div>
-            {/* </div> */}
+            {/* News */}
+            <div className={styles.news}>
+                <FeaturedNews posts={news} />
+            </div>
         </div>
     )
 }

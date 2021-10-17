@@ -34,7 +34,7 @@ type ChoicesButtonProps<C extends ElementType> = Props<C> & Omit<ComponentPropsW
 const ChoicesButton = <C extends ElementType = 'button'> ({
     as,
     variant = 'default',
-    className = 'button button--outline',
+    className = 'button button--outline button-reset',
     choices,
     id,
     isReverted = false,
@@ -78,7 +78,7 @@ const ChoicesButton = <C extends ElementType = 'button'> ({
                         <button
                             aria-label={isOpen ? 'Collapse options' : 'Expand options'}
                             aria-pressed={isOpen ? 'true' : 'false'}
-                            className={`${styles.toggle} ${isOpen ? styles.toggleDisabled : ''} show-focus`}
+                            className={`${styles.toggle} ${isOpen ? styles.toggleDisabled : ''} show-focus button-reset`}
                             onClick={() => listRef.current?.focus({ preventScroll: true })}
                             ref={toggleRef}
                             tabIndex={-1}
@@ -101,7 +101,7 @@ const ChoicesButton = <C extends ElementType = 'button'> ({
                                 className={`${styles.listItem}`}
                                 key={`${id || ''}-choices-button-${idx}`}>
                                 <button
-                                    className={`${styles.listButton} type-style-6`}
+                                    className={`${styles.listButton} button-reset type-style-6`}
                                     onClick={callback}
                                     type='button'>
                                     {label}

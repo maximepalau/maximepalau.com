@@ -8,7 +8,7 @@ import ChoicesButton from '@/components/triggers/choices-button'
 
 type ContactButtonProps = {
     email: string
-    linkedinUrl: string
+    linkedinUrl?: string | null
     id?: string
 }
 

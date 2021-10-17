@@ -46,7 +46,7 @@
     border: 1px solid currentColor;
     opacity: 0;
     transition: opacity .2s ease-out, .2s transform ease-out;
-    z-index: 1;
+    z-index: $z-list-box;
     pointer-events: none;
     overflow: hidden;
 }
