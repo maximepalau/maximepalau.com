@@ -28,11 +28,11 @@ export const useMarquee = ({ ref, duplicationFactor, durationEdgeToEdge }: { ref
                 return
             }
 
-            const durationWithDuplicator = durationEdgeToEdge * duplicationFactor
             const width = ref.current?.offsetWidth
             const ratio = width / viewportWidth
-            const duplicationShadow = Math.ceil(viewportWidth / width * duplicationFactor) + 1
-            const _duration = durationWithDuplicator * ratio
+            const multiplicator = ratio >= 1 ? ratio : Math.ceil((1 - ratio) * 10);
+            const duplicationShadow = Math.ceil(multiplicator * duplicationFactor) + 1
+            const finalDuration = durationEdgeToEdge * duplicationFactor * ratio
 
             let _shadow = ''
 
@@ -40,15 +40,12 @@ export const useMarquee = ({ ref, duplicationFactor, durationEdgeToEdge }: { ref
                 return
             }
 
-            console.log({duplicationShadow});
-            
-
             for (var i = 0; i < duplicationShadow; i++) {
                 _shadow += (i === 0 ? '' : ', ') + `${width * (i + 1)}px 0 0 currentColor` /* [2] */
             }
 
             setShadow(_shadow)
-            setDuration(_duration)
+            setDuration(finalDuration)
         }, [ viewportWidth, isFontLoaded, duplicationFactor, durationEdgeToEdge ])
     }
 

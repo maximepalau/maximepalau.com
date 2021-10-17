@@ -1,5 +1,6 @@
-import React, { FunctionComponent, ReactNode, useState, useRef, useEffect } from 'react'
+import React, { FunctionComponent, ReactNode, useState, useRef, useEffect, useLayoutEffect } from 'react'
 import { throttle } from 'lodash'
+import { requestNextAnimationFrame } from '@/helpers/browser'
 
 /* ========================================================================= */
 /* Types */
@@ -23,11 +24,25 @@ type CursorAreaProps = {
 
 /**
  * Provides an interface to display a moving UI device that tracks the user mouse.
+ * 1. Prevents the initial move to be transitioned so the cursor tracker doesn’t jump.
  */
 const CursorTrackerArea: FunctionComponent<CursorAreaProps> = ({ renderCursorTracker, isEnabled = true, children }) => {
+    const isBrowser = typeof window !== 'undefined'
     const [ mousePosition, setMousePosition ] = useState({ x: 0, y: 0 })
+    const [ isMoveInitialized, setIsMoveInitialized ] = useState(false)
     const [ isMoving, setIsMoving ] = useState(false)
     const areaRef = useRef<HTMLDivElement>(null)
+
+    /* [1] */
+    if (isBrowser) {
+        useLayoutEffect(() => {
+            if (!isMoveInitialized) return
+            requestNextAnimationFrame(() => {
+                setIsMoveInitialized(false)
+                setIsMoving(true)
+            })
+        }, [ isMoveInitialized ])
+    }
 
     useEffect(() => {
         if (!areaRef.current || !isEnabled) return
@@ -38,7 +53,7 @@ const CursorTrackerArea: FunctionComponent<CursorAreaProps> = ({ renderCursorTra
 
         const listenMouseMoves = () => {
             addEventListener('mousemove', syncCursorPosition)
-            setIsMoving(true)
+            setIsMoveInitialized(true)
         }
 
         const ignoreMouseMoves = () => {

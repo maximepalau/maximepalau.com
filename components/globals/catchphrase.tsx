@@ -26,7 +26,7 @@ const Catchphrase: FunctionComponent<CatchphraseProps> = ({ sentence, author, so
     const sentenceRef = useRef(null)
     const isVisible = useVisibility(containerRef)
     const breakpoint = useBreakpoint([ 'main', 's', 'm' ], 'main')
-    const durations = { main: 2500, s: 5000, m: 7500 };
+    const durations = { main: 2500, s: 4000, m: 5000 };
     const { shadow, duration } = useMarquee({
         ref: sentenceRef,
         duplicationFactor: 10,
@@ -70,7 +70,7 @@ const Catchphrase: FunctionComponent<CatchphraseProps> = ({ sentence, author, so
                     <div
                         aria-hidden='true'
                         className={styles.cursorTracker}
-                        style={{ transform: `translate(${x}px, ${y}px) translate(-50%, -80%)` }}>
+                        style={{ transform: `translate(${x}px, ${y}px) translate(-50%, -80%)`, transition: isMoving ? '' : 'none'  }}>
                         <div className={`${styles.cursorTrackerAction} ${isMoving ? styles.cursorTrackerActionIsVisible : ''} ${authorColorClasses} type-style-7`}>
                             {author}
                             <ArrowRightIcon className={styles.cursorTrackerIcon} />
