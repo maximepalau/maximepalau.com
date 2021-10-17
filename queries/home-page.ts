@@ -51,6 +51,7 @@ export default gql`
                 author
                 sourceUrl
             }
+            projectsClosingTextRaw
             projectsTextRaw
             projects {
                 id: _id

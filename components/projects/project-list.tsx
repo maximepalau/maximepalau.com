@@ -3,8 +3,6 @@ import React, { FunctionComponent } from 'react'
 import { Project as ProjectType } from '@/types/cms'
 import Project from './project'
 
-import styles from './styles/project-list.module.scss'
-
 /* ========================================================================= */
 /* Type(s) */
 /* ========================================================================= */
@@ -20,7 +18,7 @@ type ProjectListProps = {
 const ProjectList: FunctionComponent<ProjectListProps> = ({ posts }) => {
 
     return (
-        <ul className={`${styles.list} list-reset`}>
+        <ul className={`list-reset`}>
             {posts.map(post => (
                 <li key={`project-item-${post.id}`}>
                     <Project {...post} />

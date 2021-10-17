@@ -47,6 +47,7 @@ type HomePageProps = {
     projectsCatchphrase: CatchphraseType
     projects: ProjectType[]
     projectsTextRaw: BlockContentType
+    projectsClosingTextRaw: BlockContentType
     title: string
     globals: GlobalsType
 }
@@ -148,8 +149,9 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                 {/* Projects */}
                 {sections.projects.isEnabled && (
                     <PageSection
-                        className='section dark-mode default-text-color default-background-color'
-                        id={sections.projects.id}>
+                        className='section'
+                        id={sections.projects.id}
+                        isDarkMode>
                         <Catchphrase isReverted {...(props.projectsCatchphrase || {})} />
 
                         <div className='container'>
@@ -161,14 +163,41 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                                     </h2>
                                 </div>
 
-                                <div className='section__right'>
+                                <div className='section__right rich-text type-style-5'>
                                     {/* Text */}
-                                    <BlockContent className='rich-text type-style-5' blocks={props.projectsTextRaw} />
+                                    <BlockContent blocks={props.projectsTextRaw} />
                                 </div>
-
+                            </div>
+                            <div className='section__content'>
+                                {/* List */}
                                 <div className='section__full'>
                                     <ProjectList posts={props.projects} />
                                 </div>
+                            </div>
+                            <div className='section__content section__content--bottom-padded'>
+                                {/* Closing text */}
+                                {props.projectsClosingTextRaw && (
+                                    <>
+                                        <div className='section__left' />
+
+                                        <div className='section__right'>
+                                            {/* Text */}
+                                            <div className='rich-text type-style-5'>
+                                                <BlockContent blocks={props.projectsClosingTextRaw} />
+                                            </div>
+
+                                            {/* Contact button */}
+                                            {props.infoContactEmail && (
+                                                <div className='section__action'>
+                                                    <ContactButton
+                                                        email={props.infoContactEmail}
+                                                        id='info-contact-contact-button'
+                                                        linkedinUrl={props.globals.linkedinUrl} />
+                                                </div>
+                                            )}
+                                        </div>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </PageSection>
@@ -223,7 +252,7 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                 )}
             </PageMain>
 
-            <PageFooter>
+            <PageFooter isDarkMode>
                 <Footer
                     heading={props.footerHeading}
                     text={props.footerTextRaw}

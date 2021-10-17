@@ -51,43 +51,43 @@
  */
 
 /* [1] */
-.rich-text > p,
-.rich-text > ul,
-.rich-text > ol,
-.rich-text > h2,
-.rich-text > h3,
-.rich-text > h4 {
+.rich-text p,
+.rich-text ul,
+.rich-text ol,
+.rich-text h2,
+.rich-text h3,
+.rich-text h4 {
     margin-top: 2.4rem;
 }
 
 /* [2] */
-.rich-text:not(.rich-text--in-flow) > p:first-child,
-.rich-text:not(.rich-text--in-flow) > ul:first-child,
-.rich-text:not(.rich-text--in-flow) > ol:first-child,
-.rich-text:not(.rich-text--in-flow) > h2:first-child,
-.rich-text:not(.rich-text--in-flow) > h3:first-child,
-.rich-text:not(.rich-text--in-flow) > h4:first-child {
+.rich-text:not(.rich-text--in-flow) p:first-child,
+.rich-text:not(.rich-text--in-flow) ul:first-child,
+.rich-text:not(.rich-text--in-flow) ol:first-child,
+.rich-text:not(.rich-text--in-flow) h2:first-child,
+.rich-text:not(.rich-text--in-flow) h3:first-child,
+.rich-text:not(.rich-text--in-flow) h4:first-child {
     margin-top: 0;
 }
 
 @include media-query('s') {
     /* [1] */
-    .rich-text > p,
-    .rich-text > ul,
-    .rich-text > ol,
-    .rich-text > h2,
-    .rich-text > h3,
-    .rich-text > h4 {
+    .rich-text p,
+    .rich-text ul,
+    .rich-text ol,
+    .rich-text h2,
+    .rich-text h3,
+    .rich-text h4 {
         margin-top: 4rem;
     }
 
     /* [2] */
-    .rich-text:not(.rich-text--in-flow) > p:first-child,
-    .rich-text:not(.rich-text--in-flow) > ul:first-child,
-    .rich-text:not(.rich-text--in-flow) > ol:first-child,
-    .rich-text:not(.rich-text--in-flow) > h2:first-child,
-    .rich-text:not(.rich-text--in-flow) > h3:first-child,
-    .rich-text:not(.rich-text--in-flow) > h4:first-child {
+    .rich-text:not(.rich-text--in-flow) p:first-child,
+    .rich-text:not(.rich-text--in-flow) ul:first-child,
+    .rich-text:not(.rich-text--in-flow) ol:first-child,
+    .rich-text:not(.rich-text--in-flow) h2:first-child,
+    .rich-text:not(.rich-text--in-flow) h3:first-child,
+    .rich-text:not(.rich-text--in-flow) h4:first-child {
         margin-top: 0;
     }
 }
@@ -111,8 +111,8 @@
     padding: 0;
 }
 
-.rich-text ol > li,
-.rich-text ul > li {
+.rich-text ol li,
+.rich-text ul li {
     display: flex;
     overflow: hidden;
 }
@@ -126,22 +126,22 @@
     counter-reset: item;
 }
 
-.rich-text ol > li {
+.rich-text ol li {
     align-items: baseline;
 }
 
-.rich-text ol > li:before {
+.rich-text ol li:before {
     content: counter(item) '.';
     display: inline-block;
     margin-right: 2.4rem;
     counter-increment: item;
 }
 
-.rich-text ul > li {
+.rich-text ul li {
     align-items: baseline;
 }
 
-.rich-text ul > li:before {
+.rich-text ul li:before {
     content: '';
     display: inline-block;
     width: 0.5em;

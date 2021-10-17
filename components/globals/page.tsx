@@ -1,4 +1,6 @@
-import React, { FunctionComponent, ComponentPropsWithoutRef } from 'react'
+import React, { FunctionComponent, ComponentPropsWithoutRef, useRef, useEffect } from 'react'
+
+import { useThemeContext } from '@/contexts/theme'
 
 import styles from './styles/page.module.scss'
 
@@ -12,9 +14,13 @@ type PageHeroProps = {} & ComponentPropsWithoutRef<'header'>
 
 type PageMainProps = {} & ComponentPropsWithoutRef<'main'>
 
-type PageSectionProps = {} & ComponentPropsWithoutRef<'section'>
+type PageSectionProps = {
+    isDarkMode?: boolean
+} & ComponentPropsWithoutRef<'section'>
 
-type PageFooterProps = {} & ComponentPropsWithoutRef<'footer'>
+type PageFooterProps = {
+    isDarkMode?: boolean
+} & ComponentPropsWithoutRef<'footer'>
 
 /* ========================================================================= */
 /* Component(s) */
@@ -48,16 +54,55 @@ export const PageMain: FunctionComponent<PageMainProps> = props => {
     )
 }
 
-export const PageSection: FunctionComponent<PageSectionProps> = props => {
+export const PageSection: FunctionComponent<PageSectionProps> = ({
+    isDarkMode = false,
+    className = '',
+    ...remainingProps
+}) => {
+    const containerRef = useRef<HTMLElement>(null)
+    const themeContext = useThemeContext()
+
+    useEffect(() => {
+        themeContext?.dispatch({
+            type: 'registerArea',
+            data: {
+                ref: containerRef,
+                mode: isDarkMode ? 'dark' : 'light'
+            }
+        })
+    }, [])
 
     return (
-        <section tabIndex={-1} {...props} />
+        <section
+            className={`${isDarkMode ? 'dark-mode' : ''} default-text-color default-background-color ${className}`}
+            ref={containerRef}
+            tabIndex={-1}
+            {...remainingProps} />
     )
 }
 
-export const PageFooter: FunctionComponent<PageFooterProps> = props => {
+export const PageFooter: FunctionComponent<PageFooterProps> = ({
+    isDarkMode = false,
+    className,
+    ...remainingProps
+}) => {
+    const containerRef = useRef<HTMLElement>(null)
+    const themeContext = useThemeContext()
+
+    useEffect(() => {
+        themeContext?.dispatch({
+            type: 'registerArea',
+            data: {
+                ref: containerRef,
+                mode: isDarkMode ? 'dark' : 'light'
+            }
+        })
+    }, [])
 
     return (
-        <footer {...props} />
+        <footer
+            className={`${isDarkMode ? 'dark-mode' : ''} default-text-color default-background-color ${className}`}
+            ref={containerRef}
+            {...remainingProps} />
     )
 }

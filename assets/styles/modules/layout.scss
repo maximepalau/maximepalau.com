@@ -33,6 +33,10 @@
     margin-top: 4rem;
 }
 
+.section__content--bottom-padded {
+    padding-bottom: 4rem;
+}
+
 .section__content--tight {
     margin-top: 1.6rem;
 }
@@ -83,6 +87,10 @@
 @include media-query('m') {
     .section + .section {
         margin-top: 8.8rem;
+    }
+
+    .section__content--bottom-padded {
+        padding-bottom: 8.8rem;
     }
 
     .section__content {

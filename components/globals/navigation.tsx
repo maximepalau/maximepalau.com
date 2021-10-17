@@ -1,6 +1,8 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useRef } from 'react'
+import whatInput from 'what-input'
 
 import { useDimensions } from '@/hooks/events'
+import { useThemeContext } from '@/contexts/theme'
 import BurgerIcon from '@/components/icons/burger-icon'
 import CrossIcon from '@/components/icons/cross-icon'
 import GithubIcon from '@/components/icons/github-icon'
@@ -8,6 +10,27 @@ import LinkedinIcon from '@/components/icons/linkedin-icon'
 import TwitterIcon from '@/components/icons/twitter-icon'
 
 import styles from './styles/navigation.module.scss'
+
+/* ========================================================================= */
+/* Function(s) */
+/* ========================================================================= */
+
+/**
+ * Accessible smooth scroll helper taking into account the height of the navigation.
+ */
+const scrollToSection = ({ targetSelector, offset = 0 }: { targetSelector: string, offset?: number }) => {
+    const target = document.querySelector(targetSelector) as HTMLElement
+
+    if (target && whatInput.ask() === 'keyboard') {
+        target?.focus()
+    } else if (target) {
+        window.scrollTo({
+            top: target.offsetTop - offset,
+            left: 0,
+            behavior: 'smooth',
+        })
+    }
+}
 
 /* ========================================================================= */
 /* Type(s) */
@@ -31,16 +54,17 @@ type NavigationProps = {
 /* ========================================================================= */
 
 const Navigation: FunctionComponent<NavigationProps> = ({ sections, globals }) => {
-    const openButtonRef = useRef<HTMLElement>(null)
-    const closeButtonRef = useRef<HTMLElement>(null)
+    const openButtonRef = useRef<HTMLButtonElement>(null)
+    const closeButtonRef = useRef<HTMLButtonElement>(null)
     const { dimensions, ref: navigationRef } = useDimensions()
+    const themeContext = useThemeContext()
 
     return (
         <>
             <style>{`:root { --navigation-height: ${dimensions?.height || 0}px }`}</style>
             <nav
                 aria-label='Page sections'
-                className={`${styles.navigation}`}
+                className={`${styles.navigation} ${themeContext?.state?.activeMode === 'dark' ? 'dark-mode' : 'light-mode'} default-text-color default-background-color`}
                 ref={navigationRef}>
                 {/* Open button */}
                 <button
@@ -71,7 +95,11 @@ const Navigation: FunctionComponent<NavigationProps> = ({ sections, globals }) =
                                 key={'navigation-item-' + section.id}>
                                 <a
                                     className={`${styles.link} hover-underline`}
-                                    href={`#${section.id}`}>
+                                    href={`#${section.id}`}
+                                    onClick={e => {
+                                        e.preventDefault()
+                                        scrollToSection({ targetSelector: `#${section.id}`, offset: dimensions?.height })
+                                    }}>
                                     {section.heading}
                                 </a>
                             </li>
