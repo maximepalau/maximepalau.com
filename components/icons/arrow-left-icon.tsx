@@ -6,6 +6,8 @@ import React, { FunctionComponent, ComponentPropsWithoutRef } from 'react'
 
 type ArrowLeftIconProps = {
     color?: string
+    width?: number
+    height?: number
 } & ComponentPropsWithoutRef<'svg'>
 
 /* ========================================================================= */
@@ -22,9 +24,8 @@ const ArrowLeftIcon: FunctionComponent<ArrowLeftIconProps> = ({
 
     return (
         <svg
-            width={width}
-            height={height}
             className={`icon ${className}`}
+            style={{ width: `${width / 10}rem`, height: `${height / 10}rem` }}
             viewBox='0 0 13 14'
             xmlns='http://www.w3.org/2000/svg'
             {...remainingProps}>

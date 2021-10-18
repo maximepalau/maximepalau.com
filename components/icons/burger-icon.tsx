@@ -6,6 +6,8 @@ import React, { FunctionComponent, ComponentPropsWithoutRef } from 'react'
 
 type BurgerIconProps = {
     color?: string
+    width?: number
+    height?: number
 } & ComponentPropsWithoutRef<'svg'>
 
 /* ========================================================================= */
@@ -22,10 +24,9 @@ const BurgerIcon: FunctionComponent<BurgerIconProps> = ({
 
     return (
         <svg
-            width={width}
-            height={height}
-            viewBox='0 0 28 14'
             className={`icon ${className}`}
+            style={{ width: `${width / 10}rem`, height: `${height / 10}rem` }}
+            viewBox='0 0 28 14'
             xmlns='http://www.w3.org/2000/svg'
             {...remainingProps}>
             <g
