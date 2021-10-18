@@ -6,6 +6,8 @@ import React, { FunctionComponent, ComponentPropsWithoutRef } from 'react'
 
 type MinusIconProps = {
     color?: string
+    width?: number
+    height?: number
 } & ComponentPropsWithoutRef<'svg'>
 
 /* ========================================================================= */
@@ -22,10 +24,9 @@ const MinusIcon: FunctionComponent<MinusIconProps> = ({
 
     return (
         <svg
-            width={width}
-            height={height}
-            viewBox='0 0 12 2'
             className={`icon ${className}`}
+            style={{ width: `${width / 10}rem`, height: `${height / 10}rem` }}
+            viewBox='0 0 12 2'
             xmlns='http://www.w3.org/2000/svg'
             {...remainingProps}>
             <path
