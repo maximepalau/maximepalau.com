@@ -100,24 +100,26 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
         <>
             <Head>
                 <title>Maxime Palau</title>
-                <meta name="keywords" content="web development, design, web design, graphic design, digital marketing, branding, brussels, london, identity" />
-                <meta name="description" content="Web adventurer from the kingdom of Belgium" />
-                <meta name="referrer" content="no-referrer-when-downgrade" />
-                <meta name="robots" content="all" />
-                <meta content="en_UK" property="og:locale" />
-                <meta content="Maxime Palau" property="og:site_name" />
-                <meta content="website" property="og:type" />
-                <meta content="https://maximepalau.com/" property="og:url" />
-                <meta content="Maxime Palau" property="og:title" />
-                <meta content="Web adventurer from the kingdom of Belgium" property="og:description" />
-                <meta content="https://github.com/maximepalau" property="og:see_also" />
-                <meta content="https://www.linkedin.com/in/maxime-palau-708a90a7/" property="og:see_also" />
-                <meta content="https://twitter.com/maximepalau" property="og:see_also" />
-                <meta name="twitter:card" content="summary" />
-                <meta name="twitter:site" content="@maximepalau" />
-                <meta name="twitter:creator" content="@maximepalau" />
-                <meta name="twitter:title" content="Maxime Palau" />
-                <meta name="twitter:description" content="Web adventurer from the kingdom of Belgium" />
+                <meta name='keywords' content='web development, design, web design, graphic design, digital marketing, branding, brussels, london, identity' />
+                <meta name='description' content='Web adventurer from the kingdom of Belgium' />
+                <meta name='referrer' content='no-referrer-when-downgrade' />
+                <meta name='robots' content='all' />
+                <meta content='en_UK' property='og:locale' />
+                <meta content='Maxime Palau' property='og:site_name' />
+                <meta content='website' property='og:type' />
+                <meta content='https://maximepalau.com/' property='og:url' />
+                <meta content='Maxime Palau' property='og:title' />
+                <meta content='Web adventurer from the kingdom of Belgium' property='og:description' />
+                <meta content='https://github.com/maximepalau' property='og:see_also' />
+                <meta content='https://www.linkedin.com/in/maxime-palau-708a90a7/' property='og:see_also' />
+                <meta content='https://twitter.com/maximepalau' property='og:see_also' />
+                <meta name='twitter:card' content='summary' />
+                <meta name='twitter:site' content='@maximepalau' />
+                <meta name='twitter:creator' content='@maximepalau' />
+                <meta name='twitter:title' content='Maxime Palau' />
+                <meta name='twitter:description' content='Web adventurer from the kingdom of Belgium' />
+                <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon' />
+                <link rel='icon' href='/favicon.ico' type='image/x-icon' />
             </Head>
             <Page>
                 {/* Hero */}
