@@ -73,7 +73,9 @@ const Footer: FunctionComponent<FooterProps> = ({ heading, text, email, globals 
                                         <a
                                             aria-label='Twitter'
                                             className={`${styles.socialMediaListItemLink}`}
-                                            href={globals.twitterUrl}>
+                                            href={globals.twitterUrl}
+                                            target='_blank'
+                                            rel='noopener'>
                                             <TwitterIcon />
                                         </a>
                                     </li>
@@ -85,7 +87,9 @@ const Footer: FunctionComponent<FooterProps> = ({ heading, text, email, globals 
                                         <a
                                             aria-label='LinkedIn'
                                             className={`${styles.socialMediaListItemLink}`}
-                                            href={globals.linkedinUrl}>
+                                            href={globals.linkedinUrl}
+                                            target='_blank'
+                                            rel='noopener'>
                                             <LinkedinIcon />
                                         </a>
                                     </li>
@@ -97,7 +101,9 @@ const Footer: FunctionComponent<FooterProps> = ({ heading, text, email, globals 
                                         <a
                                             aria-label='Github'
                                             className={`${styles.socialMediaListItemLink}`}
-                                            href={globals.githubUrl}>
+                                            href={globals.githubUrl}
+                                            target='_blank'
+                                            rel='noopener'>
                                             <GithubIcon />
                                         </a>
                                     </li>

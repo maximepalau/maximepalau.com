@@ -118,7 +118,9 @@ const Navigation: FunctionComponent<NavigationProps> = ({ sections, globals }) =
                                     <li className={styles.socialMediaListItem}>
                                         <a
                                             aria-label='Twitter'
-                                            href={globals.twitterUrl}>
+                                            href={globals.twitterUrl}
+                                            target='_blank'
+                                            rel='noopener'>
                                             <TwitterIcon className={styles.socialMediaIcon} />
                                         </a>
                                     </li>
@@ -128,7 +130,9 @@ const Navigation: FunctionComponent<NavigationProps> = ({ sections, globals }) =
                                     <li className={styles.socialMediaListItem}>
                                         <a
                                             aria-label='LinkedIn'
-                                            href={globals.linkedinUrl}>
+                                            href={globals.linkedinUrl}
+                                            target='_blank'
+                                            rel='noopener'>
                                             <LinkedinIcon className={styles.socialMediaIcon} />
                                         </a>
                                     </li>
@@ -138,7 +142,9 @@ const Navigation: FunctionComponent<NavigationProps> = ({ sections, globals }) =
                                     <li className={styles.socialMediaListItem}>
                                         <a
                                             aria-label='Github'
-                                            href={globals.githubUrl}>
+                                            href={globals.githubUrl}
+                                            target='_blank'
+                                            rel='noopener'>
                                             <GithubIcon className={styles.socialMediaIcon} />
                                         </a>
                                     </li>
