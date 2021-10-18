@@ -1,0 +1,27 @@
+/* ========================================================================= */
+/* General */
+/* ========================================================================= */
+
+.dark-mode,
+.light-mode {
+    transition: color .2s ease-out, background-color .2s ease-out;
+}
+
+/* ========================================================================= */
+/* Keyframes */
+/* ========================================================================= */
+
+@keyframes underline-slide-out-in {
+    0% {
+        background-size: 100% 0.07em;
+        background-position: 100% 100%;
+    } 50% {
+        background-size: 0% 0.07em;
+        background-position: 100% 100%;
+    } 51% {
+        background-position: 0% 100%;
+    } 100% {
+        background-size: 100% 0.07em;
+        background-position: 0% 100%;
+    }
+}

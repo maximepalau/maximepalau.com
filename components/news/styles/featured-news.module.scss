@@ -1,0 +1,38 @@
+.carousel {
+    height: 100%;
+    position: relative;
+}
+
+.controls {
+    position: absolute;
+    top: .8rem;
+    right: .8rem;
+}
+
+.controlPrev {
+    padding: 1.6rem .4rem 1.6rem 1.6rem;
+}
+
+.controlNext {
+    padding: 1.6rem 1.6rem 1.6rem .4rem;
+}
+
+.progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--text-color);
+}
+
+@include media-query('m') {
+    .controls {
+        top: 2.4rem;
+        right: 2.4rem;
+    }
+
+    .progress {
+        top: auto;
+        bottom: 0;
+    }
+}

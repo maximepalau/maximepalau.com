@@ -1,0 +1,44 @@
+/* ========================================================================= */
+/* Layout */
+/* ========================================================================= */
+
+/**
+ * Wraps the bracketed @content into a media query matching
+ * the given breakpoint key.
+ *
+ * @param {string} $from - the min-width breakpoint.
+ * @param {string} $to - the max-width breakpoint (optional).
+ *
+ * @requires @variable $layouts-name.
+ * @requires @variable $layouts-break-point.
+ */
+ @mixin media-query($from, $to: false) {
+    $from-index: index($layouts-name, $from);
+    $from-breakpoint:
+        if($from-index, nth($layouts-break-point, $from-index), $from);
+
+    @if $to {
+        $to-index: index($layouts-name, $to);
+        $to-breakpoint:
+            if($to-index, nth($layouts-break-point, $to-index), $to) - 0.01;
+
+        @if ($from-breakpoint == 0) {
+            @media only screen and (max-width: $to-breakpoint) {
+                @content;
+            }
+        } @else {
+            @media only screen and
+            (min-width: $from-breakpoint) and (max-width: $to-breakpoint) {
+                @content;
+            }
+        }
+    } @else {
+        @if ($from-breakpoint == 0) {
+            @content;
+        } @else {
+            @media only screen and (min-width: $from-breakpoint) {
+                @content;
+            }
+        }
+    }
+}

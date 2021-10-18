@@ -1,0 +1,105 @@
+/* ========================================================================= */
+/* From mobile */
+/* ========================================================================= */
+
+.container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.quote {
+    display: flex;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.sentence {
+    display: inline-block;
+    padding: 0 1.6rem;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.sentenceIsAnimated {
+    animation: marquee infinite linear;
+    will-change: none;
+}
+
+.author {}
+
+.cursorTracker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    transition: transform .1s ease-out;
+    z-index: $z-cursor-tracker;
+}
+
+.cursorTrackerAction,
+.author {
+    display: flex;
+    align-items: center;
+    padding: .8rem 1.6rem 1rem;
+    transform: scale(.7);
+    border-radius: 2rem;
+    opacity: 0;
+    transition: opacity .2s ease-out, transform .2s ease-out;
+}
+
+.cursorTrackerActionIsVisible {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.cursorTrackerIcon,
+.authorIcon {
+    margin-left: .8rem;
+}
+
+
+.authorContainer {
+    margin-top: -3.2rem;
+}
+
+.author {
+    display: inline-flex;
+    margin-left: 2.4rem;
+    opacity: 1;
+    transform-origin: left;
+}
+
+/* ========================================================================= */
+/* From tablet */
+/* ========================================================================= */
+
+@include media-query('s') {
+
+    .author {
+        margin-left: 4rem;
+        transform: scale(.9);
+    }
+}
+
+/* ========================================================================= */
+/* From laptop */
+/* ========================================================================= */
+
+@include media-query('m') {
+
+    .author {
+        transform: scale(1);
+    }
+}
+
+/* ========================================================================= */
+/* Keyframes */
+/* ========================================================================= */
+
+@keyframes marquee {
+    from {
+        transform: translate3d(0, 0, 0);
+    } to {
+        transform: translate3d(-1000%, 0, 0);
+    }
+}

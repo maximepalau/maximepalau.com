@@ -1,0 +1,126 @@
+/* ========================================================================= */
+/* Container */
+/* ========================================================================= */
+
+.container {
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+}
+
+@include media-query('s') {
+    .container {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
+
+@include media-query('m') {
+    .container {
+        padding-left: 6.4rem;
+        padding-right: 6.4rem;
+    }
+}
+
+/* ========================================================================= */
+/* Sections */
+/* ========================================================================= */
+
+.section + .section {
+    margin-top: 4rem;
+}
+
+.section__content {
+    margin-top: 4rem;
+}
+
+.section__content--bottom-padded {
+    padding-bottom: 4rem;
+}
+
+.section__content--tight {
+    margin-top: 1.6rem;
+}
+
+.section__full {
+    width: 100%;
+}
+
+.section__left {
+    width: 100%;
+}
+
+.section__right {
+    width: 100%;
+    margin-top: 2.4rem;
+}
+
+.section__action {
+    margin-top: 2.4rem;
+}
+
+.section__content--outline::before {
+    content: '';
+    display: block;
+    width: 100%;
+    margin: 0 0 1.6rem;
+    border-top: 1px solid currentColor;
+}
+
+@include media-query('s') {
+    .section__right {
+        margin-top: 4rem;
+    }
+
+    .section__action {
+        margin-top: 4rem;
+    }
+
+    .section__content--outline::before {
+        margin: 0 0 1.6rem;
+    }
+
+    .section__content--outline .section__right {
+        margin-top: 2.4rem;
+    }
+}
+
+@include media-query('m') {
+    .section + .section {
+        margin-top: 8.8rem;
+    }
+
+    .section__content--bottom-padded {
+        padding-bottom: 8.8rem;
+    }
+
+    .section__content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        margin: 8.8rem -2.4rem 0;
+        margin-right: -2.4rem;
+    }
+
+    .section__content--tight {
+        margin-top: 2.4rem;
+    }
+
+    .section__left {
+        width: calc(6 / 16 * 100%);
+        padding: 0 2.4rem;
+    }
+
+    .section__right {
+        width: calc(10 / 16 * 100%);
+        margin-top: 0;
+        padding: 0 2.4rem;
+    }
+
+    .section__content--outline .section__right {
+        margin-top: 0;
+    }
+
+    .section__content--outline::before {
+        margin: 0 2.4rem 2.4rem;
+    }
+}

@@ -1,0 +1,58 @@
+.container {
+    margin-top: 4rem;
+    padding: 4rem 0;
+}
+
+.text {
+    margin-top: 1.6rem;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.action {
+    margin-top: 2.4rem;
+    margin-right: 1.6rem;
+}
+
+.socialMedia {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 2.4rem;
+}
+
+.socialMediaHeading {
+    margin-right: 1.6rem;
+}
+
+.socialMediaList {
+    display: flex;
+}
+
+.socialMediaListItem {
+    margin-right: 1.6rem;
+}
+
+.socialMediaListItemLink {
+    display: flex;
+    align-items: center;
+}
+
+@include media-query('m') {
+    .container {
+        margin-top: 8.8rem;
+        padding: 8.8rem 0;
+    }
+
+    .heading,
+    .text {
+        width: calc(100% * 9 / 16);
+        margin-left: -2.4rem;
+        margin-right: -2.4rem;
+        padding: 0 2.4rem;
+    }
+}

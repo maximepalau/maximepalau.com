@@ -1,0 +1,123 @@
+/* ========================================================================= */
+/* Underlines */
+/* ========================================================================= */
+
+.underline {
+    background-image: linear-gradient(to bottom, currentColor, currentColor);
+    background-size: 100% 0.07em;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+}
+
+.underline:hover {
+    animation: underline-slide-out-in 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 1 forwards;
+}
+
+.hover-underline {
+    background-image: linear-gradient(to bottom, currentColor, currentColor);
+    background-size: 0% .07em;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    transition: background-size .6s cubic-bezier(.165, .84, .44, 1);
+}
+
+.hover-underline:hover,
+.hover-underline.is-active {
+    background-size: 100% .07em;
+    background-position: 0 100%;
+}
+
+@media (hover: none) {
+    .hover-underline {
+        text-decoration: none;
+        background-image: linear-gradient(to bottom, currentColor, currentColor);
+        background-size: 0% .07em;
+        background-origin: content-box;
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        transition: background-size .6s cubic-bezier(.165, .84, .44, 1);
+    }
+
+    .hover-underline:hover,
+    .hover-underline.is-active {
+        background-size: 100% .07em;
+        background-position: 0% 100%;
+    }
+}
+
+/* ========================================================================= */
+/* Arrow link */
+/* ========================================================================= */
+
+.arrow-link {
+    display: inline-flex;
+    align-items: center;
+}
+
+.arrow-link__icon {
+    display: inline-block;
+    margin-left: .8rem;
+    transform: translateX(0);
+    transition: transform .2s ease-out;
+}
+
+.arrow-link:hover .arrow-link__icon,
+.scope-hover:hover .arrow-link__icon {
+    transform: translateX(.6rem);
+}
+
+/* ========================================================================= */
+/* Scroll link */
+/* ========================================================================= */
+
+.scroll-link {
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.scroll-link:hover .scroll-link__icon,
+.scope-hover:hover .scroll-link__icon {
+    animation: icon-jump 1.2s infinite ease-out;
+}
+
+@keyframes icon-jump {
+    0% {
+        transform: translateY(0);
+    } 25% {
+        transform: translateY(30%);
+    } 75% {
+        transform: translateY(-30%);
+    } 100% {
+        transform: translateY(0);
+    }
+}
+
+/* ========================================================================= */
+/* Buttons */
+/* ========================================================================= */
+
+.button {
+    display: inline-block;
+    padding: 1.2rem 1.6rem;
+}
+
+.button--in-flow {
+    margin-top: 2.4rem;
+}
+
+.button--outline {
+    border: 1px solid currentColor;
+    transition: border-color .2s ease-out;
+}
+
+.button--outline:hover {
+    border-color: var(--dark-grey);
+}
+
+@include media-query('m') {
+    .button--in-flow {
+        margin-top: 4rem;
+    }
+}
