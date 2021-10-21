@@ -99,6 +99,7 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
 
     return (
         <>
+            {/* Head */}
             <Head>
                 <title>Maxime Palau</title>
                 <HeadContent
@@ -106,6 +107,8 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                     description='Web adventurer from the kingdom of Belgium.'
                     globals={props.globals} />
             </Head>
+
+            {/* Page */}
             <Page>
                 {/* Hero */}
                 <PageHero>
@@ -262,6 +265,7 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                     )}
                 </PageMain>
 
+                {/* Footer */}
                 <PageFooter isDarkMode>
                     <Footer
                         heading={props.footerHeading}
