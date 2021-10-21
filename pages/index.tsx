@@ -100,6 +100,7 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
     return (
         <>
             <Head>
+                <title>Maxime Palau</title>
                 <HeadContent
                     title='Maxime Palau'
                     description='Web adventurer from the kingdom of Belgium.'

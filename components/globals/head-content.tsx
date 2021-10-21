@@ -18,7 +18,7 @@ type HeadContentProps = {
 /* Component(s) */
 /* ========================================================================= */
 
-const HeadContent: FunctionComponent<HeadContentProps> = ({ title, description, globals }) => {
+const HeadContent: FunctionComponent<HeadContentProps> = ({ description, globals, title }) => {
 
     return (
         <>
@@ -36,7 +36,6 @@ const HeadContent: FunctionComponent<HeadContentProps> = ({ title, description, 
                         });
                     `,
                 }}/>
-            <title>Maxime Palau</title>
             <meta name='description' content={description} />
             <meta name='referrer' content='no-referrer-when-downgrade' />
             <meta name='robots' content='all' />
