@@ -1,0 +1,72 @@
+.container {
+    width: 100%;
+    padding: 2.4rem;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+}
+
+.headingContent {
+    margin-left: .8rem;
+}
+
+.text {
+    margin-top: 1.6rem;
+    max-width: 60rem;
+}
+
+.action {
+    margin-top: 2.4rem;
+}
+
+.illustration {
+    display: none;
+}
+
+/* ========================================================================= */
+/* From tablet */
+/* ========================================================================= */
+
+@include media-query('s') {
+    .container {
+        padding: 4rem;
+    }
+
+    .action {
+        margin-top: 4rem;
+    }
+}
+
+/* ========================================================================= */
+/* Laptop / desktop */
+/* ========================================================================= */
+
+@include media-query('m') {
+    .container {
+        position: relative;
+        padding-right: calc(max(25%, 20rem) + 4rem);
+        overflow: hidden;
+    }
+
+    .headingIcon {
+        display: none;
+    }
+
+    .headingContent {
+        margin-left: 0;
+    }
+
+    .illustration {
+        display: block;
+        width: max(25%, 20rem) !important;
+        height: 100% !important;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        transform: scale(1.1);
+        transform-origin: left;
+    }
+}

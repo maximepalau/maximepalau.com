@@ -25,6 +25,7 @@ import Navigation from '@/components/globals/navigation'
 import Footer from '@/components/globals/footer'
 import Catchphrase from '@/components/globals/catchphrase'
 import Hero from '@/components/globals/hero'
+import GithubPromotionalBanner from '@/components/globals/github-promotional-banner'
 import ProjectList from '@/components/projects/project-list'
 import ArticleList from '@/components/articles/article-list'
 
@@ -51,6 +52,10 @@ export type HomePageProps = {
     projectsTextRaw: BlockContentType
     projectsClosingTextRaw: BlockContentType
     title: string
+    githubPromotionHeading: string
+    githubPromotionText: string
+    githubPromotionLinkLabel: string
+    githubPromotionLinkUrl: string
     globals: GlobalsType
 }
 
@@ -95,7 +100,7 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
             id: 'interests',
             isEnabled: true,
         },
-    };
+    }
 
     return (
         <>
@@ -260,6 +265,19 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                                         </div>
                                     </section>
                                 ))}
+
+                                {/* Github promotion */}
+                                {props.githubPromotionHeading && props.githubPromotionText && props.githubPromotionLinkLabel && props.githubPromotionLinkUrl && (
+                                    <div className='section__content'>
+                                        <div className='section__full'>
+                                            <GithubPromotionalBanner
+                                                heading={props.githubPromotionHeading}
+                                                text={props.githubPromotionText}
+                                                linkLabel={props.githubPromotionLinkLabel}
+                                                linkUrl={props.githubPromotionLinkUrl} />
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </PageSection>
                     )}
