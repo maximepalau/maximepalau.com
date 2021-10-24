@@ -1,6 +1,6 @@
 # maximepalau.com
 
-This repository gathers the code source used on maximepalau.com. The code has been made public in a matter of transparency and to be available as learning material. Any code present in this repository can be reused in your own projects. However, I kindly request anybody who would reuse any piece of code in this repository to respect the author’s rights and not to simply reproduce the design used on the website or to use any resources that would require a personal license.
+This repository gathers the code source used on [maximepalau.com](https://maximepalau.com). The code has been made public in a matter of transparency and to be available as learning material. Any code present in this repository can be reused in your own projects. However, I kindly request anybody who would reuse any piece of code in this repository to respect the author’s rights and not to simply reproduce the design used on the website or to use any resources that would require a personal license.
 
 ## Table of content
 - [Technology stack](#technology-stack-)
@@ -21,6 +21,7 @@ This repository gathers the code source used on maximepalau.com. The code has be
 - [x] Make repository available to public access.
 - [ ] Implement tests for logical components and helpers/hooks using [Jest](https://jestjs.io) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
 - [ ] Explore [RxJS](https://rxjs.dev) solution.
+- [ ] Add a light/dark mode toggle button.
 - [ ] Add an article section (once available).
 
 ## Questions & contact
