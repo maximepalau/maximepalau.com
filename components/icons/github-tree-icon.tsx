@@ -17,7 +17,7 @@ type GithubTreeIconProps = {
 
 const GithubTreeIcon: FunctionComponent<GithubTreeIconProps> = ({
     color = 'currentColor',
-    backgroundColor = '#F6F6F6',
+    backgroundColor = '#1A1A1A',
     width = 184,
     height = 403,
     className = '',

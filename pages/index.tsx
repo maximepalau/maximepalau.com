@@ -194,7 +194,7 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                                         <ProjectList posts={props.projects} />
                                     </div>
                                 </div>
-                                <div className={`section__content ${hasGithubPromotionalBanner ? '' : 'section__content--bottom-padded'}`}>
+                                <div className={`section__content section__content--bottom-padded`}>
                                     {/* Closing text */}
                                     {props.projectsClosingTextRaw && (
                                         <>
@@ -219,19 +219,6 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                                         </>
                                     )}
                                 </div>
-
-                                {/* Github promotion */}
-                                {hasGithubPromotionalBanner && (
-                                    <div className='section__content section__content--bottom-padded'>
-                                        <div className='section__full'>
-                                            <GithubPromotionalBanner
-                                                heading={props.githubPromotionHeading}
-                                                text={props.githubPromotionText}
-                                                linkLabel={props.githubPromotionLinkLabel}
-                                                linkUrl={props.githubPromotionLinkUrl} />
-                                        </div>
-                                    </div>
-                                )}
                             </div>
                         </PageSection>
                     )}
@@ -280,6 +267,19 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                                         </div>
                                     </section>
                                 ))}
+
+                                {/* Github promotion */}
+                                {hasGithubPromotionalBanner && (
+                                    <div className='section__content'>
+                                        <div className='section__full'>
+                                            <GithubPromotionalBanner
+                                                heading={props.githubPromotionHeading}
+                                                text={props.githubPromotionText}
+                                                linkLabel={props.githubPromotionLinkLabel}
+                                                linkUrl={props.githubPromotionLinkUrl} />
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </PageSection>
                     )}
