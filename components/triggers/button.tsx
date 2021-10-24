@@ -1,6 +1,7 @@
 import React, { ElementType, ComponentPropsWithoutRef } from 'react'
 
 import { checkExternalLink } from '@/helpers/location'
+import ArrowRightIcon from '../icons/arrow-right-icon'
 
 /* ========================================================================= */
 /* Type(s) */
@@ -8,6 +9,7 @@ import { checkExternalLink } from '@/helpers/location'
 
 interface Props<C extends ElementType> {
     as?: C
+    variant?: 'outline' | 'outline-arrow'
 }
 
 type ButtonProps<C extends ElementType> = Props<C> & Omit<ComponentPropsWithoutRef<C>, keyof Props<C>>
@@ -21,7 +23,9 @@ type ButtonProps<C extends ElementType> = Props<C> & Omit<ComponentPropsWithoutR
  */
 const Button = <C extends ElementType = 'button'> ({
     as,
-    className = 'button button--outline button--in-flow button-reset',
+    className = 'button--in-flow',
+    children,
+    variant = 'outline',
     ...remainingProps
 }: ButtonProps<C>) => {
     const defaultAttributes = {} as ComponentPropsWithoutRef<C>
@@ -41,11 +45,20 @@ const Button = <C extends ElementType = 'button'> ({
         }
     }
 
+    const buttonClassName = 'button-reset button button--outline'
+
     return (
         <Component
-            className={`type-style-6 ${className}`}
+            className={`type-style-6 ${buttonClassName} ${className}`}
             {...defaultAttributes}
-            {...remainingProps} />
+            {...remainingProps}>
+            {children}
+            {variant === 'outline-arrow' && (
+                <span className='button__arrow-icon'>
+                    <ArrowRightIcon />
+                </span>
+            )}
+        </Component>
     )
 }
 

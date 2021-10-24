@@ -116,6 +116,17 @@
     border-color: var(--dark-grey);
 }
 
+.button__arrow-icon {
+    display: inline-block;
+    margin-left: 2.4rem;
+    transform: translateX(-.8rem);
+    transition: transform .3s ease-out;
+}
+
+.button:hover .button__arrow-icon {
+    transform: translateX(0);
+}
+
 @include media-query('m') {
     .button--in-flow {
         margin-top: 4rem;

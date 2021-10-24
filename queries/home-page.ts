@@ -66,6 +66,10 @@ export default gql`
                 descriptionRaw
                 projectUrl
             }
+            githubPromotionHeading
+            githubPromotionText
+            githubPromotionLinkLabel
+            githubPromotionLinkUrl
             articlesCatchphrase {
                 sentence
                 author

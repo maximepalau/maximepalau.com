@@ -3,6 +3,7 @@
 /* ========================================================================= */
 
 .container {
+    width: 100%;
     padding-left: 2.4rem;
     padding-right: 2.4rem;
 }
@@ -113,6 +114,10 @@
     .section__right {
         width: calc(10 / 16 * 100%);
         margin-top: 0;
+        padding: 0 2.4rem;
+    }
+
+    .section__full {
         padding: 0 2.4rem;
     }
 
