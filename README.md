@@ -21,6 +21,7 @@ This repository gathers the code source used on [maximepalau.com](https://maxime
 - [x] Make repository available to public access.
 - [ ] Implement tests for logical components and helpers/hooks using [Jest](https://jestjs.io) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
 - [ ] Explore [RxJS](https://rxjs.dev) solution.
+- [ ] Add a light/dark mode toggle button.
 - [ ] Add an article section (once available).
 
 ## Questions & contact
