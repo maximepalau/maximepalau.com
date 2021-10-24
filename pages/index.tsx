@@ -102,8 +102,6 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
         },
     }
 
-    const hasGithubPromotionalBanner = props.githubPromotionHeading && props.githubPromotionText && props.githubPromotionLinkLabel && props.githubPromotionLinkUrl
-
     return (
         <>
             {/* Head */}
@@ -194,7 +192,7 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                                         <ProjectList posts={props.projects} />
                                     </div>
                                 </div>
-                                <div className={`section__content section__content--bottom-padded`}>
+                                <div className='section__content section__content--bottom-padded'>
                                     {/* Closing text */}
                                     {props.projectsClosingTextRaw && (
                                         <>
@@ -269,7 +267,7 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                                 ))}
 
                                 {/* Github promotion */}
-                                {hasGithubPromotionalBanner && (
+                                {props.githubPromotionHeading && props.githubPromotionText && props.githubPromotionLinkLabel && props.githubPromotionLinkUrl && (
                                     <div className='section__content'>
                                         <div className='section__full'>
                                             <GithubPromotionalBanner
