@@ -33,6 +33,7 @@ const HeadContent: FunctionComponent<HeadContentProps> = ({ description, globals
                         gtag('js', new Date());
                         gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}', {
                             page_path: window.location.pathname,
+                            anonymize_ip: true,
                         });
                     `,
                 }}/>
