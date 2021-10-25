@@ -8,7 +8,7 @@ This repository gathers the code source used on [maximepalau.com](https://maxime
 - [Questions & contact](#questions--contact-)
 
 ## Technology stack
-- [Reactjs](https://reactjs.org/)
+- [React.js](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org)
 - [Next.js](https://nextjs.org)
 - [Apollo](https://www.apollographql.com)
