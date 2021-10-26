@@ -56,6 +56,13 @@ type CarouselContextType = {
     dequeueAutoplay: () => boolean
 }
 
+type Timer = {
+    enqueue: () => boolean
+    dequeue: () => boolean
+    pause: () => boolean
+    resume: () => boolean
+}
+
 /* ========================================================================= */
 /* Functions */
 /* ========================================================================= */
@@ -64,14 +71,19 @@ type CarouselContextType = {
  * Utility function providing a basic timer logic used to manage the autoplay.
  * 1. The enqueue function registers the callback to be called in X seconds.
  * 2. The dequeue function unregisters the callback from the event loop.
+ * 3. The pause function unregisters the callback but saves it to be resumed later on.
+ * 4. The resume function registers the previously saved callback.
  */
-const generateTimer = (time: number | undefined, callback: () => void) => {
+const generateTimer = (time: number | undefined, callback: () => void): Timer => {
     let timeoutId = null as number | null
+    let requestedTime = null as number | null
+    let remainingTime = null as number | null
 
     /* [1] */
     const enqueue = (duration = time) => {
         if (!time) return false
-        
+        remainingTime = null
+        requestedTime = Date.now()
         timeoutId = setTimeout(() => callback(), duration)
         return true
     }
@@ -81,12 +93,28 @@ const generateTimer = (time: number | undefined, callback: () => void) => {
         if (!time || !timeoutId) return false
         clearTimeout(timeoutId)
         timeoutId = null
+        requestedTime = null
         return true
+    }
+
+    /* [3] */
+    const pause = () => {
+        if (!requestedTime || !time) return false
+        remainingTime = requestedTime + time - Date.now()
+        return dequeue()
+    }
+
+    /* [4] */
+    const resume = () => {
+        if (!remainingTime) return false
+        return enqueue(remainingTime)
     }
 
     return {
         enqueue,
         dequeue,
+        pause,
+        resume,
     }
 }
 
@@ -113,7 +141,7 @@ const useLoopingIndex = (
         onChange?.(newValidIndex)
     }
 
-    const increment = () => {
+    const increment = () => {        
         const newIndex = index + 1
         const newValidIndex = newIndex >= total ? 0 : newIndex
         setIndex(newValidIndex)
@@ -214,7 +242,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({
  * 3. If an autoplay timer is defined, adds the autplay to the component lifecycle.
  */
 const CarouselTrack: FunctionComponent<CarouselTrackProps> = ({ className = '', ...remainingProps }) => {
-    const { index, decrement, increment, ids, setIsSliding, isGrabbing, setIsGrabbing, setIsPaused, autoplayTime, transitionTime } = useContext(CarouselContext)
+    const { index, decrement, increment, ids, setIsSliding, isGrabbing, setIsGrabbing, isPaused, setIsPaused, autoplayTime, transitionTime } = useContext(CarouselContext)
     const [ deltaX, setDeltaX ] = useState(0)
 
     /* [1] */
@@ -222,6 +250,7 @@ const CarouselTrack: FunctionComponent<CarouselTrackProps> = ({ className = '', 
     const trackInnerRef = useRef<HTMLDivElement>(null)
     const positionRef = useRef<({ decrement: (() => void) | undefined, increment: (() => void) | undefined }) | null>(null)
     positionRef.current = { decrement, increment }
+    const autoplayRef = useRef<Timer | null>(null)
 
     /* [2] */
     useSwipes({
@@ -239,16 +268,27 @@ const CarouselTrack: FunctionComponent<CarouselTrackProps> = ({ className = '', 
     /* [3] */
     if (autoplayTime && transitionTime) {
         useEffect(() => {
-            if (isGrabbing) return
+            const autoplay = generateTimer(
+                autoplayTime + transitionTime,
+                () => {
+                    positionRef.current?.increment?.()
+                    autoplay.enqueue()
+                },
+            )
 
-            const {
-                enqueue: enqueueAutoplay,
-                dequeue: dequeueAutoplay,
-            } = generateTimer(autoplayTime + transitionTime, () => void increment?.())
+            autoplayRef.current = autoplay
+            autoplay.enqueue()
 
-            enqueueAutoplay?.()
-            return () => void dequeueAutoplay?.()
-        }, [ index, increment, isGrabbing ])
+            return () => void autoplay.dequeue()
+        }, [])
+
+        useLazyEffect(() => {
+            if (isGrabbing || isPaused) {
+                autoplayRef.current?.pause()
+            } else {
+                autoplayRef.current?.resume()
+            }
+        }, [ isGrabbing, isPaused ])
     }
 
     return (
