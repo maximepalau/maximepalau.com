@@ -51,7 +51,8 @@ const CursorTrackerArea: FunctionComponent<CursorAreaProps> = ({ renderCursorTra
             return setMousePosition({ x: clientX, y: clientY })
         }, 100, { leading: true })
 
-        const listenMouseMoves = () => {
+        const listenMouseMoves = ({ clientX, clientY }: MouseEvent) => {
+            setMousePosition({ x: clientX, y: clientY })
             addEventListener('mousemove', syncCursorPosition)
             setIsMoveInitialized(true)
         }
