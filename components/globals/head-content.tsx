@@ -28,13 +28,15 @@ const HeadContent: FunctionComponent<HeadContentProps> = ({ description, globals
             <script
                 dangerouslySetInnerHTML={{
                     __html: `
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-                        gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}', {
-                            page_path: window.location.pathname,
-                            anonymize_ip: true,
-                        });
+                        if (new URL(location).searchParams.get('tracking') !== 'false') {
+                            window.dataLayer = window.dataLayer || []
+                            function gtag(){dataLayer.push(arguments)}
+                            gtag('js', new Date())
+                            gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}', {
+                                page_path: window.location.pathname,
+                                anonymize_ip: true,
+                            })
+                        }
                     `,
                 }}/>
             <meta name='description' content={description} />
