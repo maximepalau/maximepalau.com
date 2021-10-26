@@ -63,14 +63,18 @@ export type HomePageProps = {
 /* Static props */
 /* ========================================================================= */
 
+/**
+ * 1. Refreshes the page every 5 minutes.
+ */
 export const getStaticProps = async () => {
     const { data } = await client.query({ query: homePageQuery })
 
     return {
         props: {
             ...(data.allHome[0] || {}),
-            globals: data.allGlobals[0]
-        }
+            globals: data.allGlobals[0],
+        },
+        revalidate: 300, /* [1] */
     }
 }
 
