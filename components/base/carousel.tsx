@@ -270,10 +270,7 @@ const CarouselTrack: FunctionComponent<CarouselTrackProps> = ({ className = '', 
         useEffect(() => {
             const autoplay = generateTimer(
                 autoplayTime + transitionTime,
-                () => {
-                    positionRef.current?.increment?.()
-                    autoplay.enqueue()
-                },
+                () => positionRef.current?.increment?.(),
             )
 
             autoplayRef.current = autoplay
@@ -281,6 +278,10 @@ const CarouselTrack: FunctionComponent<CarouselTrackProps> = ({ className = '', 
 
             return () => void autoplay.dequeue()
         }, [])
+
+        useLazyEffect(() => {
+            autoplayRef.current?.enqueue()
+        }, [ index ])
 
         useLazyEffect(() => {
             if (isGrabbing || isPaused) {
