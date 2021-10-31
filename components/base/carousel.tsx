@@ -280,6 +280,7 @@ const CarouselTrack: FunctionComponent<CarouselTrackProps> = ({ className = '', 
         }, [])
 
         useLazyEffect(() => {
+            autoplayRef.current?.dequeue()
             autoplayRef.current?.enqueue()
         }, [ index ])
 
