@@ -17,7 +17,6 @@ import { isMedia } from '@/helpers/browser'
 const scrollToTarget = ({ targetSelector, offset = 0 }: { targetSelector: string, offset?: number }) => {
     const target = document.querySelector(targetSelector) as HTMLElement
     const hasReducedMotion = isMedia('(prefers-reduced-motion: reduce)')
-    console.log({ hasReducedMotion })
 
     if (target && (whatInput.ask() === 'keyboard' || hasReducedMotion)) {
         target?.focus()
