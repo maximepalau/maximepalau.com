@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ComponentPropsWithoutRef, useState, createContext, useContext, useRef, useEffect } from 'react'
 
-import { requestNextAnimationFrame } from '@/helpers/browser'
+import { isMedia, requestNextAnimationFrame } from '@/helpers/browser'
 import { useLazyEffect } from '@/hooks/lifecycle'
 import { useKeyboard, useSwipes } from '@/hooks/events'
 
@@ -240,9 +240,12 @@ const Carousel: FunctionComponent<CarouselProps> = ({
  *    lifecycle (performance optimisation).
  * 2. Tracks the user swipe events.
  * 3. If an autoplay timer is defined, adds the autplay to the component lifecycle.
+ * 4. If the user is sensible to animations, let’s deliver a simplified version 
+ *    of the carousel (direct slide changes and autoplay removed).
  */
 const CarouselTrack: FunctionComponent<CarouselTrackProps> = ({ className = '', ...remainingProps }) => {
     const { index, decrement, increment, ids, setIsSliding, isGrabbing, setIsGrabbing, isPaused, setIsPaused, autoplayTime, transitionTime } = useContext(CarouselContext)
+    const [ isSimplified, setIsSimplified ] = useState(false) /* [4] */
     const [ deltaX, setDeltaX ] = useState(0)
 
     /* [1] */
@@ -268,6 +271,8 @@ const CarouselTrack: FunctionComponent<CarouselTrackProps> = ({ className = '', 
     /* [3] */
     if (autoplayTime && transitionTime) {
         useEffect(() => {
+            if (isSimplified) return
+
             const autoplay = generateTimer(
                 autoplayTime + transitionTime,
                 () => positionRef.current?.increment?.(),
@@ -277,13 +282,16 @@ const CarouselTrack: FunctionComponent<CarouselTrackProps> = ({ className = '', 
             autoplay.enqueue()
 
             return () => void autoplay.dequeue()
-        }, [])
+        }, [ isSimplified ])
 
         useLazyEffect(() => {
+            if (isSimplified) return
+            autoplayRef.current?.dequeue()
             autoplayRef.current?.enqueue()
         }, [ index ])
 
         useLazyEffect(() => {
+            if (isSimplified) return
             if (isGrabbing || isPaused) {
                 autoplayRef.current?.pause()
             } else {
@@ -291,6 +299,12 @@ const CarouselTrack: FunctionComponent<CarouselTrackProps> = ({ className = '', 
             }
         }, [ isGrabbing, isPaused ])
     }
+
+    /* [4] */
+    useEffect(() => {
+        const hasReducedMotion = isMedia('(prefers-reduced-motion: reduce)')
+        hasReducedMotion && setIsSimplified(true)
+    }, [])
 
     return (
         <div style={{ maxWidth: '100%', overflow: 'hidden' }} ref={trackRef}>
@@ -312,7 +326,7 @@ const CarouselTrack: FunctionComponent<CarouselTrackProps> = ({ className = '', 
                     ref={trackInnerRef}
                     style={{
                         transform: `translateX(calc(100% * -${(index ?? 0)}))`,
-                        transition: `transform ${(transitionTime || 0) / 1000}s ease-out`,
+                        transition: isSimplified ? '' : `transform ${(transitionTime || 0) / 1000}s ease-out`,
                         pointerEvents: deltaX ? 'none' : 'auto',
                     }}
                     {...remainingProps} />
