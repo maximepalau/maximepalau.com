@@ -2,6 +2,8 @@ import React, { FunctionComponent, ProviderProps, RefObject, Dispatch, useContex
 import whatInput from 'what-input'
 import { throttle } from 'lodash'
 
+import { isMedia } from '@/helpers/browser'
+
 /* ========================================================================= */
 /* Function(s) */
 /* ========================================================================= */
@@ -14,9 +16,15 @@ import { throttle } from 'lodash'
  */
 const scrollToTarget = ({ targetSelector, offset = 0 }: { targetSelector: string, offset?: number }) => {
     const target = document.querySelector(targetSelector) as HTMLElement
+    const hasReducedMotion = isMedia('(prefers-reduced-motion: reduce)')
+    console.log({ hasReducedMotion })
 
-    if (target && whatInput.ask() === 'keyboard') {
+    if (target && (whatInput.ask() === 'keyboard' || hasReducedMotion)) {
         target?.focus()
+        window.scrollTo({
+            top: target.offsetTop + offset,
+            left: 0,
+        })
     } else if (target) {
         window.scrollTo({
             top: target.offsetTop + offset,
