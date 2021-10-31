@@ -57,7 +57,6 @@
     margin-left: .8rem;
 }
 
-
 .authorContainer {
     margin-top: -3.2rem;
 }
@@ -89,6 +88,22 @@
 
     .author {
         transform: scale(1);
+    }
+}
+
+/* ========================================================================= */
+/* Accessibility */
+/* ========================================================================= */
+
+/**
+ * For user suffering from sickness caused by motions,
+ * let's disable the marquee effect.
+ */
+@media (prefers-reduced-motion) {
+    .sentence {
+        white-space: normal !important;
+        animation: none !important;
+        text-shadow: none !important;
     }
 }
 

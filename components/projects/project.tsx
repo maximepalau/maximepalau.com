@@ -1,8 +1,9 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import BlockContent from '@sanity/block-content-to-react'
 
 import { Project as ProjectType } from '@/types/cms'
 
+import { isMedia } from '@/helpers/browser'
 import { useBreakpoint, useDimensions } from '@/hooks/events'
 import ArrowLink from '@/components/triggers/arrow-link'
 import ProjectExcerpt from './project-excerpt'
@@ -19,6 +20,10 @@ type ProjectProps = ProjectType
 /* Component(s) */
 /* ========================================================================= */
 
+/**
+ * 1. If the user is sensible to animations, let’s just open the projects
+ *    straight away to avoid any painful transitions.
+ */
 const Project: FunctionComponent<ProjectProps> = props => {
     const { client, descriptionRaw, missions, projectUrl, technologies, title } = props
 
@@ -28,6 +33,12 @@ const Project: FunctionComponent<ProjectProps> = props => {
     const { dimensions: containerDimensions, ref: containerRef } = useDimensions()
     const { dimensions: titleDimensions, ref: titleRef } = useDimensions()
     const breakpoint = useBreakpoint([ 'main', 'm' ], 'main')
+
+    /* [1] */
+    useEffect(() => {
+        const hasReducedMotion = isMedia('(prefers-reduced-motion: reduce)')
+        hasReducedMotion && setIsOpen(true)
+    }, [])
 
     if (!isOpen && breakpoint === 'main') {
         return (
