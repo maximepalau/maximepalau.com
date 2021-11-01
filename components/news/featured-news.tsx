@@ -39,7 +39,7 @@ const FeaturedNews: FunctionComponent<FeaturedNewsProps> = ({ posts }) => {
             id='featured-news'
             label='Featured news'
             total={posts?.length}
-            autoplayTime={3000}
+            autoplayTime={4000}
             transitionTime={500}
             className={styles.carousel}>
             {/* Progress bar */}
