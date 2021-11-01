@@ -340,7 +340,6 @@ const CarouselSlide: FunctionComponent<CarouselSlideProps> = ({ index, label, cl
 
     return (
         <div
-            aria-hidden={activeIndex === index ? 'false' : 'true'}
             aria-label={label || `${index + 1} of ${total}`}
             aria-roledescription='slide'
             className={`${styles.slide} ${className}`}
