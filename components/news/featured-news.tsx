@@ -46,9 +46,10 @@ const FeaturedNews: FunctionComponent<FeaturedNewsProps> = ({ posts }) => {
             <CarouselProgress className={styles.progress} />
 
             {/* Slides track */}
-            <CarouselTrack>
+            <CarouselTrack className={styles.track}>
                 {posts.map((post, idx) => (
                     <CarouselSlide
+                        className={styles.slide}
                         label={post?.surtitle}
                         index={idx}
                         key={`featured-news-${idx}`}>
