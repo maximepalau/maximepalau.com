@@ -307,7 +307,7 @@ const CarouselTrack: FunctionComponent<CarouselTrackProps> = ({ className = '', 
     }, [])
 
     return (
-        <div style={{ maxWidth: '100%', overflow: 'hidden' }} ref={trackRef}>
+        <div style={{ height: '100%', maxWidth: '100%', overflow: 'hidden' }} ref={trackRef}>
             <div
                 onMouseEnter={() => setIsPaused?.(true)}
                 onMouseLeave={() => setIsPaused?.(false)}
@@ -315,6 +315,7 @@ const CarouselTrack: FunctionComponent<CarouselTrackProps> = ({ className = '', 
                 onTouchEnd={() => setIsPaused?.(false)}
                 onTouchCancel={() => setIsPaused?.(false)}
                 style={{
+                    height: '100%',
                     transform: isGrabbing ? `translateX(${deltaX}px)` : 'translateX(0px)',
                     transition: isGrabbing ? '' : `transform ${(transitionTime || 0) / 1000}s ease-out`,
                 }}>
