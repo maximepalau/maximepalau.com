@@ -13,15 +13,13 @@ import styles from './styles/catchphrase.module.scss'
 /* Type(s) */
 /* ========================================================================= */
 
-type CatchphraseProps = CatchphraseType & {
-    isReverted?: boolean
-}
+type CatchphraseProps = CatchphraseType
 
 /* ========================================================================= */
 /* Component(s) */
 /* ========================================================================= */
 
-const Catchphrase: FunctionComponent<CatchphraseProps> = ({ sentence, author, sourceUrl, isReverted = false }) => {
+const Catchphrase: FunctionComponent<CatchphraseProps> = ({ sentence, author, sourceUrl }) => {
     const containerRef = useRef(null)
     const sentenceRef = useRef(null)
     const isVisible = useVisibility(containerRef)
@@ -32,7 +30,7 @@ const Catchphrase: FunctionComponent<CatchphraseProps> = ({ sentence, author, so
         duplicationFactor: 10,
         durationEdgeToEdge: breakpoint ? durations[breakpoint] : 0,
     });
-    const authorColorClasses = isReverted ? 'default-text-color default-background-color' : 'inverted-text-color inverted-background-color'
+    const authorColorClasses = 'inverted-text-color inverted-background-color'
 
     const content = (
         <div

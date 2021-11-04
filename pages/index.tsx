@@ -170,7 +170,7 @@ export const HomePage: FunctionComponent<HomePageProps> = props => {
                             className='section'
                             id={sections.projects.id}
                             isDarkMode>
-                            <Catchphrase isReverted {...(props.projectsCatchphrase || {})} />
+                            <Catchphrase {...(props.projectsCatchphrase || {})} />
 
                             <div className='container'>
                                 <div className='section__content'>
