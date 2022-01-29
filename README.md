@@ -11,7 +11,7 @@ This repository gathers the code source used on [maximepalau.com](https://maxime
 - [React.js](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org)
 - [Next.js](https://nextjs.org)
-- [Apollo](https://www.apollographql.com)
+- [GraphQL](https://graphql.org) [(Apollo)](https://www.apollographql.com)
 - [SASS/SCSS](https://sass-lang.com)
 - [ARIA](https://www.w3.org/TR/html-aria/)
 - [Sanity (CMS)](https://www.sanity.io)
