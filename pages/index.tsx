@@ -71,6 +71,7 @@ export const getStaticProps = async () => {
             ...(data.allHome[0] || {}),
             globals: data.allGlobals[0],
         },
+        revalidate: 300
     }
 }
 
