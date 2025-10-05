@@ -64,12 +64,16 @@ export type HomePageProps = {
 /* ========================================================================= */
 
 export const getStaticProps = async () => {
-    const { data } = await client.query({ query: homePageQuery })
+    const response = await client.query({ query: homePageQuery })
+
+    if (!response || !response.data) {
+        throw new Error('COULD_NOT_FETCH')
+    }
 
     return {
         props: {
-            ...(data.allHome[0] || {}),
-            globals: data.allGlobals[0],
+            ...(response.data.allHome[0] || {}),
+            globals: response.data.allGlobals[0],
         },
         revalidate: 300
     }

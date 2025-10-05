@@ -16,14 +16,5 @@ This repository gathers the code source used on [maximepalau.com](https://maxime
 - [ARIA](https://www.w3.org/TR/html-aria/)
 - [Sanity (CMS)](https://www.sanity.io)
 
-## Road map
-- [x] Publish website V2.
-- [x] Make repository available to public access.
-- [ ] Implement tests for logical components and helpers/hooks using [Jest](https://jestjs.io) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
-- [ ] Explore [RxJS](https://rxjs.dev) solutions.
-- [ ] Explore [XState](https://xstate.js.org/docs/recipes/react.html) solutions.
-- [ ] Add a light/dark mode toggle button.
-- [ ] Add an article section (once available).
-
 ## Questions & contact
 If you have any question regarding the code in this repository, feel free to reach me at [contact@maximepalau.com](mailto:contact@maximepalau.com)!
